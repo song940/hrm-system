@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hrm</title>
+	<%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    "welcome", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "welcome", "data-turbolinks-track" => true %>
+	<%= render 'layouts/shim' %>
+</head>
+<body>
+	<div class="container">
+		<%= yield %>
+	</div>
+</body>
+</html>

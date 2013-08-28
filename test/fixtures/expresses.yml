@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  employee_id: 1
+  company: MyString
+  title: MyString
+  from: 2013-08-27
+  to: 2013-08-27
+  reason: MyString
+
+two:
+  employee_id: 1
+  company: MyString
+  title: MyString
+  from: 2013-08-27
+  to: 2013-08-27
+  reason: MyString

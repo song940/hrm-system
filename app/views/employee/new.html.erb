@@ -1,0 +1,53 @@
+<% provide(:title, '人事管理') %>
+<h1>添加员工</h1>
+<div class="emp_base">
+<h3>基本信息</h3>
+<hr />
+<div class="row-fluid" >
+	<div class="span2" >
+		<img src="http://placehold.it/120&text=Photo" />
+		<br />
+		<button class="btn btn-mini"><i class="icon icon-upload" ></i> upload photo</a>
+	</div>
+	<div class="span5 control-group" >
+		<label class="control-label" for="emp_name">Name:</label>
+		<input type="text" name="emp_name" required placeholder="FirstName LastName" />
+		<label class="control-label" for="emp_birthday" required>Birthday:</label>
+		<input type="date" name="emp_name" />
+	</div>
+	<div class="span5 control-group" >
+		<label class="control-label" for="emp_gender">Gender:</label>
+		<input type="text" name="emp_name" required placeholder="Male or Female" />
+		<label class="control-label" for="emp_passport">ID:</label>
+		<input type="text" name="emp_name" required placeholder="Passport ID" />
+	</div>
+</div>
+</div>
+-
+<div class="emp_express">
+<h3>工作经验</h3>
+<button class="btn btn-mini btn-primary">Add</button>
+<hr />
+<div class="row-fluid" >
+	<div class="span6 control-group" >
+		<label class="control-label" for="emp_name">Company:</label>
+		<input type="text" name="emp_name" required placeholder="FirstName LastName" />
+		<label class="control-label" for="emp_birthday" required>From:</label>
+		<input type="date" name="emp_name" />
+	</div>
+	<div class="span6 control-group" >
+		<label class="control-label" for="emp_gender">Title:</label>
+		<input type="text" name="emp_name" required placeholder="Male or Female" />
+		<label class="control-label" for="emp_passport">To:</label>
+		<input type="date" name="emp_name" required placeholder="Passport ID" />
+	</div>
+	<div class=" control-group" >
+		<label class="control-label" for="emp_passport">Reason:</label>
+		<input type="text" name="emp_name" required placeholder="Passport ID" class="input-block-level" />
+	</div>
+		<button class="btn btn-mini btn-danger">Remove</button>
+</div>
+</div>
+<div class="row-fluid" >
+	<button class="btn btn-large btn-block btn-primary">Submit</button>	
+</div>-
