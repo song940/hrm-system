@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: 42028bc06e72a848d297edc1467a969a7c9def57
+  specs:
+    nested_form (0.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,8 +50,6 @@ GEM
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-datatables-rails (1.11.2)
-      jquery-rails
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -116,8 +120,8 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
-  jquery-datatables-rails
   jquery-rails
+  nested_form!
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc

@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  emp: 
+    emp_new: 
+      title: "New employee"
+      emp_base: 
+        title: "Base information"
+      emp_express:  
+        title: "Work experience"
+      emp_education: 
+        title: "Education"

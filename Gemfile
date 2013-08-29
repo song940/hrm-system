@@ -47,5 +47,9 @@ end
 gem 'bootstrap-sass'
 
 
-gem 'jquery-datatables-rails'
+#gem 'jquery-datatables-rails'
+
 gem 'will_paginate'
+
+#gem "nested_form"
+gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"

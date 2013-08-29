@@ -1,17 +1,25 @@
 Hrm::Application.routes.draw do
 
+  resources :experiences
+
+  resources :dictionaries
+
+  resources :trains
+
+  resources :performances
+
+  resources :jobs
+
+  resources :groups
+
+  resources :educations
+
+  resources :employees
+
+  resources :checks
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  #resources :employee
-  get "/employee/new"	=> "employee#new"
-	
-  get "/employee"	=> "employee#index"
-  get "/check"		=> "check#index"
-  get "/train"		=> "train#index"
-  get "/salary"		=> "salary#index"
-  get "/performance" =>"performance#index"
-
-
 
   match '/sign_up',  to: 'users#new',            via: 'get'
   match '/sign_in',  to: 'sessions#new',         via: 'get'

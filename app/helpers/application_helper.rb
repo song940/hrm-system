@@ -6,9 +6,4 @@ module ApplicationHelper
 			link_to link_text, link_path
 		end
 	end
-	
-	def render_subnav
-		temp = "app/views/#{controller_name}/_subnav.html.erb"
-		render file: temp if File.exist? temp
-	end
 end

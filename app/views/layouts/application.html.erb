@@ -14,12 +14,20 @@
 			<div class="span2" >
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list" >
-						<li class="nav-header"><%= yield(:title)%></li>
-						<%= render_subnav %>
+						<li class="nav-header">人员管理</li>
+						<%= nav_link "员工列表", employees_path %>
+						<%= nav_link "添加员工", new_employee_path %>
+						<li class="nav-header">工作组管理</li>
+						<%= nav_link "工作组", groups_path %>
+						<%= nav_link "添加工作组", new_group_path %>
+						<li class="nav-header">考勤管理</li>
+						<%= nav_link "考勤列表", checks_path %>
+						<%= nav_link "添加考勤", new_check_path %>					
 					</ul>
 				</div>
 			</div>
 			<div class="span10">
+			<%= render 'layouts/flash' %>
 			<%= yield %>
 			</div>
 		</div>

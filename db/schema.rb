@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827050142) do
+ActiveRecord::Schema.define(version: 20130828140053) do
+
+  create_table "checks", force: true do |t|
+    t.integer  "employee_id"
+    t.date     "check_in"
+    t.date     "check_out"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dictionaries", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "educations", force: true do |t|
     t.integer  "employee_id"
@@ -32,7 +48,7 @@ ActiveRecord::Schema.define(version: 20130827050142) do
     t.datetime "updated_at"
   end
 
-  create_table "expresses", force: true do |t|
+  create_table "experiences", force: true do |t|
     t.integer  "employee_id"
     t.string   "company"
     t.string   "title"
@@ -45,8 +61,8 @@ ActiveRecord::Schema.define(version: 20130827050142) do
 
   create_table "groups", force: true do |t|
     t.integer  "group_id"
-    t.string   "name"
     t.integer  "employee_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,11 +70,31 @@ ActiveRecord::Schema.define(version: 20130827050142) do
   create_table "jobs", force: true do |t|
     t.integer  "employee_id"
     t.integer  "group_id"
-    t.string   "title"
+    t.integer  "title"
     t.integer  "salary"
     t.integer  "status"
     t.date     "from"
     t.date     "to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "performances", force: true do |t|
+    t.integer  "employee_id"
+    t.integer  "number"
+    t.string   "reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trains", force: true do |t|
+    t.string   "name"
+    t.integer  "employee_id"
+    t.string   "keynote"
+    t.datetime "date"
+    t.integer  "duration"
+    t.string   "address"
+    t.boolean  "must"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
