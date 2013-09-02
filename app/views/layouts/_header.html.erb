@@ -31,19 +31,23 @@
           <form class="navbar-form pull-left" action="/search" methon="get" >
             <input name="controller" value="<%= controller_name %>" type="hidden" />
             <input name="q" type="text" class="span2" placeholder="Type a something .." data-provide="typeahead" >
-            <button type="submit" class="btn">Search</button>
+            <!-- <button type="submit" class="btn">Search</button> -->
           </form>
           <ul class="nav pull-right">
             <li><%= link_to "Help",    '#' %></li>
             <li class="divider-vertical"></li>
             <% if signed_in? %>
+
             <li class="dropdown">
               <%= link_to users_path ,:class => "dropdown-toggle", :data => { :toggle => 'dropdown' } do %>
+                <%= gravatar_for current_user,size: 20, class: 'img-circle' %>
                 <%= current_user.name %>
                 <b class="caret"></b>
               <% end %>
               <ul class="dropdown-menu">
-                <li><%= link_to "Home", current_user %></li>
+                <li><%= link_to "Home", current_user %>
+                
+                 </li>
                 <li><%= link_to "Sign out", sign_out_path, method: "delete" %></li>
               </ul>
             </li>
