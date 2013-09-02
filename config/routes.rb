@@ -1,12 +1,12 @@
 Hrm::Application.routes.draw do
 
 
+ 
+
   get "search" => "search#index"
   get "salary" => "salary#index"
 
-  
-
-
+  resources :attachments
 
   resources :experiences
 
