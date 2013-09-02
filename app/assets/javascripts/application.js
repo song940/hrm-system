@@ -14,16 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
+//= require bootstrap
 //= require_tree .
-
-
-(function(win, jq, undefined){
+(function(win,jq,undefined){
 
 	jq(function($){
-		$('#btn_emp_express').on('click',function(){
-			var tmpl_emp_express = new EJS({ element: 'ejs_emp_express' });
-			$('#emp_express').append(tmpl_emp_express.render());
-		});
+		$(".navbar-form input").typeahead({source:['abc','google']});
 	});
 
 })(window,jQuery);

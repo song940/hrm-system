@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828140053) do
+ActiveRecord::Schema.define(version: 20130901120434) do
 
   create_table "checks", force: true do |t|
     t.integer  "employee_id"
@@ -106,6 +106,9 @@ ActiveRecord::Schema.define(version: 20130828140053) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

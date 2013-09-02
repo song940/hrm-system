@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title><%= yield(:title) %> | HRM System</title>
+	<meta charset="utf-8" >
 	<%= csrf_meta_tags %>
 	<%= stylesheet_link_tag    "default", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -9,28 +10,16 @@
 </head>
 <body>
 	<%= render 'layouts/header' %>
-	<div class="container-fluid">
-		<div class="row-fluid" >
-			<div class="span2" >
-				<div class="well sidebar-nav">
-					<ul class="nav nav-list" >
-						<li class="nav-header">人员管理</li>
-						<%= nav_link "员工列表", employees_path %>
-						<%= nav_link "添加员工", new_employee_path %>
-						<li class="nav-header">工作组管理</li>
-						<%= nav_link "工作组", groups_path %>
-						<%= nav_link "添加工作组", new_group_path %>
-						<li class="nav-header">考勤管理</li>
-						<%= nav_link "考勤列表", checks_path %>
-						<%= nav_link "添加考勤", new_check_path %>					
-					</ul>
-				</div>
-			</div>
-			<div class="span10">
-			<%= render 'layouts/flash' %>
+	<div class="clear nav-both"></div>
+	<div class="container">
+		<%= render 'layouts/flash' %>
 			<%= yield %>
-			</div>
-		</div>
+		<%= render 'layouts/footer' %>
 	</div>
 </body>
+<!--//**
+*
+*	just code for fun.
+*/
+-->
 </html>

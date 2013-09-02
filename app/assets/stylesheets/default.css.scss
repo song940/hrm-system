@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 /* universal */
 
@@ -6,72 +7,52 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  padding-top: 60px;
+body {  
+	background-image: url("bg.png");
+ 	background-repeat: repeat-x;
 }
 
-section {
-  overflow: auto;
+.nav-both{
+	position: relative;
+	margin-top: 5em;
 }
 
-textarea {
-  resize: vertical;
+.group_tree {
+  zoom:3;
 }
 
-.center {
-  text-align: center;
+/* Change the docs' brand */
+header > .navbar .brand {
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
 }
-
-.center h1 {
-  margin-bottom: 10px;
-}
-
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-#logo:hover {
-  color:#bbb;
+header > .navbar .brand:hover {
   text-decoration: none;
-  background-color:#fff;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
 
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+.jumbotron {
+margin: 60px 0;
+text-align: center;
+}
+.jumbotron h1 {
+font-size: 72px;
+line-height: 1;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
+.go_top {
+  background: #FFF;
   text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #999;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-.sidebar-nav {
-	padding: 9px 0;
+  border: 1px solid #eee;
+  display: none;
+  height: 20px;
+  width: 24px;
+  padding-top: 4px;
+  overflow: hidden;
+  border-radius: 6px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
 }
