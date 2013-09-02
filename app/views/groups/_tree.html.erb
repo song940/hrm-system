@@ -1,0 +1,19 @@
+<% 
+Group.where(:group_id => id).each do |gp| %>
+
+<%= link_to 'Edit', edit_group_path(gp), :class => "btn btn-mini" %>
+<%= link_to 'Destroy', gp, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-mini" %>
+<span  >|-&nbsp;<%= ("\\___" * Group.level) %></span>
+<span class="label label-info" ><%=gp.name%></span>
+<br />
+<%= if Group.where(:group_id => gp.id).count > 0
+		Group.level += 1
+		 tmpl = render 'tree',:id => gp.id
+	else
+		Group.level = 0
+		""
+	end
+ %>
+
+
+<% end %>

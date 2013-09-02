@@ -1,0 +1,21 @@
+<%= nested_form_for @employee do |f| %>
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= render "emp_base", :f => f %>
+<%= render "emp_express", :f => f %>
+<%= render "emp_education",:f => f %>
+<%= render "emp_jobs",:f => f  if @employee.id %>
+  <div class="actions">
+    <%= f.submit  :class => "btn btn-primary btn-block btn-large" %>
+  </div>
+<% end %>

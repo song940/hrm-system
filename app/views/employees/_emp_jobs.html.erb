@@ -1,0 +1,47 @@
+
+<div class="emp_jobs">
+<h3><%= t "emp.new.job.title" %></h3>
+<hr />
+<%= f.fields_for :job do |job_form| %>
+<div class="row-fluid">
+  <div class="span5 control-group" >
+    <div class="field">
+      <%= job_form.label :group_id %>
+      <%= job_form.collection_select :group_id, Group.all, :id, :name, { :prompt => '选择部门' } %>
+    </div>
+    <div class="field">
+      <%= job_form.label :status, t("emp.new.job.lbl_status") %>
+      <%= job_form.collection_select :status, Dictionary.where(:name => "contract"), :key, :value, { :prompt => '选择合同类型' } %>
+    </div>
+  </div>
+  <div class="span5 control-group" >
+    <div class="field">
+      <%= job_form.label :title, t("emp.new.job.lbl_title") %>
+      <%= job_form.text_field :title %>
+    </div>
+    <div class="field">
+    <%= job_form.label :salary, t("emp.new.job.lbl_salary") %>
+    <%= job_form.number_field :salary %>
+  </div>
+  </div>
+</div>
+<div class="row-fluid">
+ <div class="span5 control-group" >
+    <div class="field">
+      <%= job_form.label :from ,t("comm.from") %>
+      <%= job_form.text_field :from, :type => 'date' %>
+    </div>
+  </div>
+  <div class="span5 control-group" >
+    <div class="field">
+      <%= job_form.label :to ,t("comm.to")%>
+      <%= job_form.text_field :to, :type => 'date' %>
+    </div>
+  </div>
+</div>
+
+<%= job_form.link_to_remove "移除工作项目", :class => "btn btn-mini btn-danger" %>
+<% end %>
+<p><%= f.link_to_add "添加工作项目", :job, :class => "btn btn-mini btn-primary" %></p>
+</div>
+

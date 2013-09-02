@@ -1,0 +1,29 @@
+<% provide(:title, '人事管理') %>
+<h1>员工列表</h1>
+
+<table class="table table-striped table-hover table-bordered " >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Passport</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.gender ? 'Male' : 'Female' %></td>
+        <td><%= employee.passport %></td>
+        <td><%= link_to 'Show', employee %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

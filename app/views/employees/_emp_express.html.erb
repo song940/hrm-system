@@ -1,0 +1,37 @@
+
+<div class="emp_express">
+<h3><%= t "emp.new.exp.title" %></h3>
+<hr />
+<%= f.fields_for :experience do |experience_form| %>
+<div class="row-fluid">
+	<div class="span5 control-group" >
+		<div class="field">
+			<%= experience_form.label :company, t("emp.new.exp.lbl_company") %>
+			<%= experience_form.text_field :company %>
+		</div>
+		<div class="field">
+			<%= experience_form.label :from ,t("comm.from") %>
+			<%= experience_form.text_field :from, :type => 'date' %>
+		</div>
+		<div class="field">
+			<%= experience_form.label :reason, t("emp.new.exp.lbl_reason") %>
+			<%= experience_form.text_field :reason %>
+		</div>
+	</div>
+	<div class="span5 control-group" >
+		<div class="field">
+			<%= experience_form.label :title, t("emp.new.exp.lbl_title") %>
+			<%= experience_form.text_field :title %>
+		</div>
+		<div class="field">
+			<%= experience_form.label :to ,t("comm.to")%>
+			<%= experience_form.text_field :to, :type => 'date' %>
+		</div>
+	</div>
+	
+</div>
+
+<%= experience_form.link_to_remove "移除工作经验", :class => "btn btn-mini btn-danger" %>
+<% end %>
+<p><%= f.link_to_add "添加工作经验", :experience, :class => "btn btn-mini btn-primary" %></p>
+</div>

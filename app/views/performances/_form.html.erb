@@ -1,0 +1,38 @@
+<%= form_for(@performance) do |f| %>
+  <% if @performance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@performance.errors.count, "error") %> prohibited this performance from being saved:</h2>
+
+      <ul>
+      <% @performance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="field">
+        <%= f.label :employee_id %>
+        <%= select_tag "group[employee_id]", options_from_collection_for_select(Employee.all, "id", "name")%>
+      </div>
+      <div class="field">
+        <%= f.label :reason %>
+        <%= f.text_field :reason %>
+      </div>
+    </div>
+      
+    <div class="span6">
+      <div class="field">
+        <%= f.label :number %>
+        <%= f.number_field :number %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

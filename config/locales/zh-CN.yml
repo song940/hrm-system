@@ -1,0 +1,36 @@
+
+cn:
+  hello: "Hello world"
+  helpers:
+    submit:
+      create: "创建 %{model}"
+      update: "更新 %{model}"
+  comm:
+    from: "从"
+    to: "到"
+  emp: 
+    new: 
+      title: "添加员工"
+      base: 
+        title: "基本信息"
+        lbl_name: "姓名"
+        lbl_gender: "性别"
+        lbl_passport: "身份证"
+      exp:  
+        title: "工作经验"
+        lbl_company: "就职单位"
+        lbl_title: "职称"
+        lbl_reason: "离职原因"
+      edu: 
+        title: "教育经历"
+        btn_add: "添加教育经历"
+        btn_remove: "移除教育经历"
+        lbl_institution: "教育院校"
+        lbl_discipline: "专业"
+        lbl_level: "教育水平"
+      job:
+        title: "分配工作" 
+        lbl_salary: "基本薪资"
+        lbl_status: "合同"
+        lbl_title: "职位"
+

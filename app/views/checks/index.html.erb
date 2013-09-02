@@ -1,0 +1,27 @@
+<h1>Listing checks</h1>
+
+<table class="table table-striped table-hover table-bordered " >
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Check in</th>
+      <th>Check out</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checks.each do |check| %>
+      <tr>
+        <td><%= check.employee.name %></td>
+        <td><%= check.check_in %></td>
+        <td><%= check.check_out %></td>
+        <td><%= link_to 'Show', check %></td>
+        <td><%= link_to 'Edit', edit_check_path(check) %></td>
+        <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

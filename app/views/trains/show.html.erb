@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @train.name %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @train.employee_id %>
+</p>
+
+<p>
+  <strong>Keynote:</strong>
+  <%= @train.keynote %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @train.date %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @train.duration %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @train.address %>
+</p>
+
+<p>
+  <strong>Must:</strong>
+  <%= @train.must %>
+</p>
+
+<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Back', trains_path %>

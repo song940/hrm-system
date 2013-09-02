@@ -1,0 +1,39 @@
+<h1>培训列表</h1>
+
+<table class="table table-striped table-hover table-bordered " >  <thead>
+  <thead>
+    <tr>
+      <th>培训主题</th>
+      <th>主讲人</th>
+      <th>关键内容</th>
+      <th>日期</th>
+      <th>时长(分)</th>
+      <th>地点</th>
+      <th>是否必须?</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trains.each do |train| %>
+      <tr>
+        <td><%= train.name %></td>
+        <td><%= train.employee.name %></td>
+        <td><%= train.keynote %></td>
+        <td><%= train.date %></td>
+        <td><%= train.duration %></td>
+        <td><%= train.address %></td>
+        <td><%= train.must %></td>
+        <td><%= link_to 'Show', train %></td>
+        <td><%= link_to 'Edit', edit_train_path(train) %></td>
+        <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Train', new_train_path %>

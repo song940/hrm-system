@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  employee_id: 1
+  keynote: MyString
+  date: 2013-08-28 16:29:56
+  duration: 1
+  address: MyString
+  must: false
+
+two:
+  name: MyString
+  employee_id: 1
+  keynote: MyString
+  date: 2013-08-28 16:29:56
+  duration: 1
+  address: MyString
+  must: false

@@ -1,0 +1,115 @@
+
+<ul class="pager">
+  <li class="previous">
+    
+    <%= link_to 'Back', employees_path %>
+  </li>
+  <li class="next">
+    <%= link_to 'Edit', edit_employee_path(@employee) %> 
+  </li>
+</ul>
+
+
+
+<table class="table  table-bordered " >
+	<tr>
+		<td colspan="4"><h1><%= @employee.name %></h1></td>
+		<td>
+			<p>创建时间: <span class="label label-info"><%= @employee.created_at %></span>	</p>
+			<p>修改时间: <span class="label label-info"><%= @employee.updated_at %></span></p>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="5">
+			<img src="http://placehold.it/120&text=<%= @employee.name %>" class="img-rounded" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4"><%= @employee.name %></td>
+	</tr>
+	<tr>
+		<td colspan="4"><%= @employee.gender ? '男' : '女' %></td>
+	</tr>
+	<tr>
+		<td colspan="4"><span class="label label-info"><%= @employee.birthday %></span></td>
+	</tr>
+	<tr>
+		<td colspan="4"><span class="label label-info"><%= @employee.passport %></span></td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<h3>工作经验</h3>
+		</td>
+	</tr>
+	<tr>
+		<td>就职单位</td>
+		<td>职称</td>
+		<td>从</td>
+		<td>到</td>
+		<td>离职原因</td>
+	</tr>
+	 <% @employee.experience.each do |experience| %>
+	 	<tr class="well">
+	 		<td><%= experience.company %></td>
+	 		<td><%= experience.title %></td>
+	 		<td><%= experience.from %></td>
+	 		<td><%= experience.to %></td>
+	 		<td><%= experience.reason %></td>
+	 	</tr>
+	 <% end %>
+
+	 <tr>
+		<td colspan="5">
+			<h3>教育经历</h3>
+		</td>
+	</tr>
+	<tr>
+		<td>院校</td>
+		<td>专业</td>
+		<td>从</td>
+		<td>到</td>
+		<td>水平</td>
+	</tr>
+	<% @employee.education.each do |education| %>
+ 	<tr class="well">
+ 		<td><%= education.institution %></td>
+ 		<td><%= education.discipline %></td>
+ 		<td><%= education.from %></td>
+ 		<td><%= education.to %></td>
+ 		<td><%= education.level %></td>
+ 	</tr>
+ 	<% end %>
+
+
+ 	<tr>
+ 		<td colspan="5">
+ 			<table class="table table-bordered">
+ 				<tr>
+					<td colspan="5">
+						<h2>分配工作</h2>
+					</td>
+				</tr>
+				<tr>
+					<td>部门</td>
+					<td>职称</td>
+					<td>基本薪资</td>
+					<td>合同</td>
+					<td>从</td>
+					<td>到</td>
+				</tr>
+				<% @employee.job.each do |job| %>
+			 	<tr class="well">
+			 		<td><%= job.group.name %></td>
+			 		<td><%= job.title %></td>
+			 		<td><%= job.salary %></td>
+			 		<td><%= job.status %></td>
+			 		<td><%= job.from %></td>
+			 		<td><%= job.to %></td>
+			 		
+			 	</tr>
+			 	<% end %>
+ 			</table>
+ 		</td>
+ 	</tr>
+
+</table>

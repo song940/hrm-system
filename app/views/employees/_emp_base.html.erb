@@ -1,0 +1,22 @@
+ <div id="emp_base" >
+ 	<h3><%= t "emp.new.base.title" %></h3>
+ 	<hr />
+ 	 <div class="row-fluid" >
+		<div class="span2" >
+			<img id="avatar" src="http://placehold.it/120&text=Photo" />
+			<p><button class="btn btn-mini"><i class="icon icon-upload" ></i> upload photo</button></p>
+		</div>
+		<div class="span5 control-group" >
+			<div class="field">
+		    <%= f.label :name , t("emp.new.base.lbl_name") %>
+		    <%= f.text_field :name, :required => 'required', :placeholder => 'Firstname Lastname' %>
+		  </div>
+		</div>
+		<div class="span5 control-group" >
+			<div class="field">
+	    		<%= f.label :passport, t("emp.new.base.lbl_passport") %>
+	    		<%= f.text_field :passport, :required => 'required', :pattern => "[0-9]{17}[0-9X]", :maxlength=> '18', :title => "passport" %>
+	  		</div>
+		</div>
+	</div>
+</div>

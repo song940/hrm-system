@@ -1,0 +1,11 @@
+<ul class="pager">
+  <li class="previous">
+    
+    <%= link_to 'Back', employees_path %>
+  </li>
+</ul>
+
+<% provide(:title, '人事管理') %>
+<h1><%= t "emp.new.title" %></h1>
+
+<%= render 'form' %>
