@@ -12,10 +12,11 @@ This is the source code of [HRM System](https://hrm-system.herokuapp.com) websit
 ## Install
 
 ```
-git clone git://github.com/ruby-china/ruby-china.git
-cd ruby-china
-ruby setup.rb
-# ensure that memcached has started up
+git clone git@github.com:song940/hrm-system.git
+cd hrm-system
+
+bundle install
+
 rails s
 ```
 ## License
