@@ -58,6 +58,16 @@ line-height: 1;
 }
 
 
+.search-query:focus{
+  width: 200px;
+  -webkit-transition: all .3s;
+     -moz-transition: all .3s;
+          transition: all .3s;
+}
+
+
+
+
 
 
 

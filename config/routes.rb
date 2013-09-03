@@ -29,7 +29,6 @@ Hrm::Application.routes.draw do
 
   resources :checks
 
-  resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -37,10 +36,16 @@ Hrm::Application.routes.draw do
   match '/sign_in',                 to: 'sessions#new',      via: 'get'
   match '/sign_out',                to: 'sessions#destroy',  via: 'delete'
 
+  get "/:username"          => "users#show" ,     as: :user
+  get "/:username/setting"  => "users#edit" , as: :user_profile
+  get "/:username/destroy"  => "users#destroy"
 
-  get "/:username" => "users#show" ,          as: :user_profile
-  get "/:username/setting" => "users#edit"
-  get "/:username/destroy" => "users#destroy"
+
+
+  match '/user/register',      to: 'users#create' ,  via: 'post'
+  match '/:username/update',       to: 'users#update' ,  via: 'patch'
+
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

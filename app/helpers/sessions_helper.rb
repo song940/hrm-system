@@ -42,5 +42,10 @@ module SessionsHelper
     def store_location
     	session[:return_to] = request.fullpath
   	end
+
+
+    def back_to_user
+      redirect_to user_path current_user.username if signed_in?
+    end
     
 end

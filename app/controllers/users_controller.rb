@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #before_action :signed_in_user, allow: [ :new ]
+  before_action :signed_in_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    redirect_to current_user if signed_in?
+    back_to_user
     @user = User.new
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to user_path @user.username
     else
       render 'new'
     end
@@ -41,7 +41,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash[:success] = 'User was successfully updated.'
+        format.html { redirect_to user_profile_path @user.username }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
