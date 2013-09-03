@@ -29,6 +29,7 @@ Hrm::Application.routes.draw do
 
   resources :checks
 
+  resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
 
