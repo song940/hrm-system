@@ -16,6 +16,7 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require_tree .
+
 (function(win,jq,undefined){
 
 	jq(function($){

@@ -20,5 +20,13 @@ module ApplicationHelper
 			link_to link_text, link_path
 		end
 	end
+
+	def user_path
+		"/#{current_user.username}"
+	end
+
+	def user_setting_path(user)
+		"#{user_path}/setting"
+	end
 	
 end

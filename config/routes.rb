@@ -6,6 +6,9 @@ Hrm::Application.routes.draw do
   get "search" => "search#index"
   get "salary" => "salary#index"
 
+
+
+
   resources :attachments
 
   resources :experiences
@@ -26,12 +29,18 @@ Hrm::Application.routes.draw do
 
   resources :checks
 
-  resources :users
+
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/sign_up',                 to: 'users#new',         via: 'get'
   match '/sign_in',                 to: 'sessions#new',      via: 'get'
   match '/sign_out',                to: 'sessions#destroy',  via: 'delete'
+
+
+  get "/:username" => "users#show" ,          as: :user_profile
+  get "/:username/setting" => "users#edit"
+  get "/:username/destroy" => "users#destroy"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

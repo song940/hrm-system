@@ -24,9 +24,10 @@ class AttachmentsController < ApplicationController
   # POST /attachments
   # POST /attachments.json
   def create
-    file_io = params[:attachment][:datafile]
-    path = File.join(Rails.root,'public',file_io.original_filename)
-    File.open(path, "wb") { |f| f.write(file_io.read)}
+    params[:files].each do |i,file_io|
+      path = File.join(Rails.root,'public',file_io.original_filename)
+      File.open(path, "wb") { |f| f.write(file_io.read)}
+    end
     render :text => "File has been uploaded successfully"
   end
 

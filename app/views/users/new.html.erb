@@ -1,7 +1,7 @@
 <% provide(:title, "Sign up") %>
 
 <div class="row">
-<div class="span6 offset3">
+<div class="span6 offset3 well">
 <h1>Sign up</h1>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -17,8 +17,8 @@
   <% end %>
 
   <div class="field">
-     <%= f.label :name %>
-     <%= f.text_field :name ,:required => "required" %>
+     <%= f.label :username %>
+     <%= f.text_field :username ,:required => "required" %>
 </div>
 
 <div class="field">
@@ -29,7 +29,7 @@
      <%= f.label :password %>
      <%= f.password_field :password ,:required => "required" %>
 </div>
-<%= f.submit "Sign up", :class => "btn btn-primary" %>
+<%= f.submit "Sign up", :class => "btn btn-success" %>
 <% end %>
 
 </div>
