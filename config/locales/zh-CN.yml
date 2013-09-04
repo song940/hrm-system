@@ -5,6 +5,23 @@ cn:
     submit:
       create: "创建 %{model}"
       update: "更新 %{model}"
+  activerecord: 
+    errors:
+      models:
+        user:
+          name: "用户"
+          attributes:
+            username:
+              too_long: "too long"
+              taken: "taken"
+              blank: "blank"
+            email:
+              invalid: "invalid"
+              taken: "taken"
+              blank: "blank"
+            password:
+              blank: "blank"
+
   comm:
     from: "从"
     to: "到"
