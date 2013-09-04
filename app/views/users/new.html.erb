@@ -1,35 +1,33 @@
 <% provide(:title, "Sign up") %>
-
 <div class="row">
-<div class="span6 offset3 well">
-<h1>Sign up</h1>
-<%= form_for(@user, :url => user_register_path) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="span6 offset3 well">
+  <h1>Sign up</h1>
+  <%= form_for(@user, :url => user_register_path) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+       <%= f.label :username %>
+       <%= f.text_field :username ,:required => "required",:placeholder => "User name" %>
     </div>
+
+    <div class="field">
+         <%= f.label :email %>
+         <%= f.text_field :email , :type => "email" ,:required => "required" ,:placeholder => "Email"%>
+    </div>
+    <div class="field">
+         <%= f.label :password %>
+         <%= f.password_field :password ,:required => "required",:placeholder => "Password" %>
+    </div>
+    <%= f.submit "Sign up", :class => "btn btn-success" %>
   <% end %>
-
-  <div class="field">
-     <%= f.label :username %>
-     <%= f.text_field :username ,:required => "required" %>
-</div>
-
-<div class="field">
-     <%= f.label :email %>
-     <%= f.text_field :email , :type => "email" ,:required => "required" %>
-</div>
-<div class="field">
-     <%= f.label :password %>
-     <%= f.password_field :password ,:required => "required" %>
-</div>
-<%= f.submit "Sign up", :class => "btn btn-success" %>
-<% end %>
-
-</div>
+  </div>
 </div>

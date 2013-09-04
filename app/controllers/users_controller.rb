@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    render "/errors/404", :status => 404 unless @user
   end
 
   # GET /users/new
@@ -54,9 +55,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    flash[:info] = "您的账户已经成功删除 , 但是我们希望能够再次见到您."  if @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end

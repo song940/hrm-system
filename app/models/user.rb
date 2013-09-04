@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
-	before_create :generate_secure_password 
+	before_create :generate_secure_password
+  before_create :generate_default_name
 
 	def User.encrypt(token)
       Digest::SHA1.hexdigest(token.to_s)
@@ -20,5 +21,9 @@ private
 
   def generate_secure_password
     self.password = User.encrypt("pass#{self.password}word")
+  end
+
+  def generate_default_name
+    self.name = self.username
   end
 end

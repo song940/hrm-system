@@ -44,6 +44,7 @@ Hrm::Application.routes.draw do
 
   match '/user/register',      to: 'users#create' ,  via: 'post'
   match '/:username/update',       to: 'users#update' ,  via: 'patch'
+  match '/:username/destroy',       to: 'users#destroy' ,  via: 'delete' , as: :delete_user
 
 
   
