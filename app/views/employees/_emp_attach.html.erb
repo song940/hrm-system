@@ -1,0 +1,19 @@
+<div class="emp_attach">
+	<h3>附件</h3>
+	<hr />
+	<%= f.fields_for :attachments do |attach_form| %>
+
+		<div class="field">
+			<%= attach_form.label :file %>
+			
+		 <div class="input-append">
+		 	<%= attach_form.text_field :description %>
+		 	<%= attach_form.file_field :file, :class => 'hide' %>	
+		 	<button class="btn btn-upload" type="button"><i class="icon-upload"></i> Select a file</button>
+		 </div>
+		</div>
+
+		<%= attach_form.link_to_remove "移除附件", :class => "btn btn-mini btn-danger" %>
+	<% end %>
+<p><%= f.link_to_add "添加附件", :attachments, :class => "btn btn-mini btn-primary" %></p>
+</div>

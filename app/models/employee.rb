@@ -5,10 +5,12 @@ class Employee < ActiveRecord::Base
 	has_many :education , :dependent => :destroy
 	has_many :experience , :dependent => :destroy
 	has_many :performance , :dependent => :destroy
+	has_many :attachments , :dependent => :destroy
 
 	accepts_nested_attributes_for :job, :allow_destroy => true
 	accepts_nested_attributes_for :education, :allow_destroy => true
 	accepts_nested_attributes_for :experience, :allow_destroy => true
+	accepts_nested_attributes_for :attachments, :allow_destroy => true
 
 
 	def birthday

@@ -1,28 +1,9 @@
-<button class="btn btn-upload">select files and upload to server</button>
+
+
+
 <p>
 	<br />
 </p>
 <div class="progress progress-striped">
   <div class="bar" style="width: 0%;"></div>
 </div>
-<script type="text/javascript">
-$('.btn-upload').on('click', function(ev) {
-	$('.progress .bar').css('width',"0%");
-
-	$.fileUploader({
-		url: '/attachments',
-		multiple: true,
-		progress: function(value) {
-			if(!$('.progress').hasClass('active'))$('.progress').addClass('active');
-			$('.progress .bar').css('width',value + "%");
-		},
-		error: function(err) {
-			console.log('error:', err);
-		},
-		success: function(data) {
-			$('.progress .bar').css('width',"100%");
-			$('.progress').removeClass('active');
-		}
-	});
-});
-</script>

@@ -62,3 +62,5 @@ gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 group :production do
       gem 'pg', '0.15.1'
 end
+
+gem 'carrierwave'

@@ -24,11 +24,17 @@ class AttachmentsController < ApplicationController
   # POST /attachments
   # POST /attachments.json
   def create
+    hash = []
     params[:files].each do |i,file_io|
-      path = File.join(Rails.root,'public',file_io.original_filename)
+      path = File.join(Rails.root,'public','attach',file_io.original_filename)
       File.open(path, "wb") { |f| f.write(file_io.read)}
+      attachment = Attachment.create do |attach|
+        attach.name = file_io.original_filename
+        attach.describe = params[:describe]
+      end 
+      hash.push attachment
     end
-    render :text => "File has been uploaded successfully"
+    render json: hash
   end
 
   # PATCH/PUT /attachments/1

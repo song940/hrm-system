@@ -1,9 +1,9 @@
 class CreateAttachments < ActiveRecord::Migration
   def change
     create_table :attachments do |t|
-      t.integer :employee_id
-      t.string :name
-      t.string :describe
+      t.text :description
+      t.string :file
+      t.references :employee, index: true
 
       t.timestamps
     end

@@ -4,8 +4,8 @@
 window.App =
 
   log: (msg)->
-    console.log(msg);
-  
+    console.log(msg)
+
   init:() -> 
      # Go Top
     $("a.go_top").click  ->
@@ -27,6 +27,15 @@ window.App =
 # NProgress
 NProgress.configure
   speed: 300
+
+$(document).on 'click','.btn-upload',(ev)->
+  wrapper =  $(ev.target).parent()
+  fileInput = wrapper.find('input[type=file]')
+  fileInput.on 'change',->
+    wrapper.find('input[type=text]').val(this.value)
+  
+  fileInput.click()
+
 
 $(document).on 'page:fetch', ->
   NProgress.start()
