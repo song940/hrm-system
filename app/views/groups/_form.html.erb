@@ -10,20 +10,26 @@
       </ul>
     </div>
   <% end %>
-
+<div class="well">
   <div class="field">
     <%= f.label :group_id %>
     <%= f.collection_select :group_id, Group.all, :id, :name, { :prompt => '公司顶层' } %>
   </div>
   <div class="field">
-    <%= f.label :employee_id %>
-    <%= select_tag "group[employee_id]", options_from_collection_for_select(Employee.all, "id", "name")%>
-  </div>
-  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit  :class => "btn "%>
+    <div class="field">
+    <%= f.label :salary %>
+    <div class="input-group input-prepend input-append ">
+      <span class="add-on">￥</span>
+      <%= f.number_field :salary ,:class => "input-medium" %>
+      <span class="add-on">.00</span>
+    </div>
+    
   </div>
+  <div class="actions">
+    <%= f.submit  :class => "btn btn-primary"%>
+  </div>
+</div>
 <% end %>

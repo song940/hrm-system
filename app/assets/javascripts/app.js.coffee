@@ -6,6 +6,9 @@ window.App =
   log: (msg)->
     console.log(msg)
 
+  fackie: ()->
+    $('.fuck-ie').remove() unless /MSIE/.test(navigator.userAgent)
+
   init:() -> 
      # Go Top
     $("a.go_top").click  ->
@@ -22,6 +25,8 @@ window.App =
 
     #NProgress
     NProgress.done(true)
+
+    App.fackie()
 
 
 # NProgress

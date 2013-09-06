@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905063339) do
+ActiveRecord::Schema.define(version: 20130906023721) do
 
   create_table "attachments", force: true do |t|
     t.text     "description"
@@ -71,8 +71,15 @@ ActiveRecord::Schema.define(version: 20130905063339) do
 
   create_table "groups", force: true do |t|
     t.integer  "group_id"
-    t.integer  "employee_id"
     t.string   "name"
+    t.integer  "salary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "helps", force: true do |t|
+    t.string   "title"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,7 +87,6 @@ ActiveRecord::Schema.define(version: 20130905063339) do
   create_table "jobs", force: true do |t|
     t.integer  "employee_id"
     t.integer  "group_id"
-    t.integer  "title"
     t.integer  "salary"
     t.integer  "status"
     t.date     "from"
@@ -110,18 +116,18 @@ ActiveRecord::Schema.define(version: 20130905063339) do
   end
 
   create_table "users", force: true do |t|
+    t.string   "username"
     t.string   "name"
     t.string   "email"
     t.string   "password"
     t.boolean  "admin"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
-    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["username"], name: "index_users_on_username"
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

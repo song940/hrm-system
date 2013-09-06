@@ -3,6 +3,8 @@ Hrm::Application.routes.draw do
 
  
 
+  
+
   get "search" => "search#index"
   get "salary" => "salary#index"
 
@@ -29,6 +31,7 @@ Hrm::Application.routes.draw do
 
   resources :checks
 
+  resources :helps
 
   resources :sessions, only: [:new, :create, :destroy]
 

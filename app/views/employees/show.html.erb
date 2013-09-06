@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<td rowspan="5">
-			<img src="http://placehold.it/120&text=<%= @employee.name %>" class="img-rounded" />
+			<img src="<%= emp_avatar_path(@employee) %>" class="img-rounded avatar" />
 		</td>
 	</tr>
 	<tr>
@@ -99,7 +99,7 @@
 				</tr>
 				<% @employee.job.each do |job| %>
 			 	<tr class="well">
-			 		<td><%= job.group.name %></td>
+			 		<td><%= (job.group && job.group.name) || job.group_id %></td>
 			 		<td><%= job.title %></td>
 			 		<td><%= job.salary %></td>
 			 		<td><%= job.status %></td>
