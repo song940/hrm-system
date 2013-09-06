@@ -1,0 +1,6 @@
+<% provide(:title, @help.title + " | Help Page") %>
+<h3><%= @help.title %></h3>
+<p class="well">
+  <%= @help.content %>
+</p>
+<%= render 'layouts/disqus' %>

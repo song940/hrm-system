@@ -1,0 +1,20 @@
+<h1>Help Page</h1>
+<ul>
+    <% @helps.each do |help| %>
+    <li class="">
+      <h3><%= link_to help.title, help %></h3>
+      post date: <%= help.updated_at %>
+      <% if signed_in? && current_user.admin? %>
+        <%= link_to 'Edit', edit_help_path(help) %> | 
+        <%= link_to 'Destroy', help, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </li>
+    <% end %>
+</ul>
+
+  
+
+
+<br>
+
+<%= link_to 'New Help', new_help_path %>
