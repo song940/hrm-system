@@ -5,6 +5,8 @@ Hrm::Application.routes.draw do
 
   
 
+  resources :notifictions
+
   get "search" => "search#index"
   get "salary" => "salary#index"
 

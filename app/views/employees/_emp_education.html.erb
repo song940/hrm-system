@@ -1,13 +1,13 @@
 
 <div class="emp_education">
-<h3><%= t "emp.new.edu.title" %></h3>
+<h3><%= t "emp.new.education" %></h3>
 <hr />
 <%= f.fields_for :education do |education_form| %>
 <div class="row-fluid">
 	<div class="span5 control-group" >
 		
 		<div class="field">
-			<%= education_form.label :institution ,t("emp.new.edu.lbl_institution") %>
+			<%= education_form.label :institution ,t("emp.new.edu.institution") %>
 			<%= education_form.text_field :institution %>
 		</div>
 		<div class="field">
@@ -15,13 +15,13 @@
 			<%= education_form.text_field :from, :type => 'date' %>
 		</div>
 		<div class="field">
-			<%= education_form.label :level, t("emp.new.edu.lbl_level") %>
+			<%= education_form.label :level, t("emp.new.edu.level") %>
 			<%= education_form.collection_select :level, Dictionary.where(:name => "level"), :key, :value, { :prompt => 'Select Level' } %>
 		</div>
 	</div>
 	<div class="span5 control-group" >
 		<div class="field">
-			<%= education_form.label :discipline, t("emp.new.edu.lbl_discipline") %>
+			<%= education_form.label :discipline, t("emp.new.edu.discipline") %>
 			<%= education_form.text_field :discipline %>
 		</div>
 		<div class="field">

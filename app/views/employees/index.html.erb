@@ -6,9 +6,7 @@
     <tr>
       <th>Name</th>
       <th>Gender</th>
-      <th>Passport</th>
-      <th></th>
-      <th></th>
+      <th>Telephone</th>
       <th></th>
     </tr>
   </thead>
@@ -16,14 +14,19 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.name %></td>
+        <td><%= link_to employee.name, employee %></td>
         <td><%= employee.gender ? 'Male' : 'Female' %></td>
-        <td><%= employee.passport %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= employee.telephone %></td>
+        <td>
+        <%= link_to edit_employee_path(employee),:class => 'btn btn-mini' do %>
+        <i class="icon icon-edit"></i> Edit
+        <% end %>
+        <%= link_to employee,:class => 'btn btn-mini btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do %>
+         <i class="icon icon-trash icon-white"></i> Destroy
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= pagination_links @employees %>

@@ -16,11 +16,3 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require_tree .
-
-(function(win,jq,undefined){
-
-	jq(function($){
-		$(".navbar-form input").typeahead({source:['abc','google']});
-	});
-
-})(window,jQuery);

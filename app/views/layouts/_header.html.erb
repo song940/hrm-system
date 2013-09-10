@@ -37,8 +37,8 @@
             <%= nav_link "培训管理", trains_path %>
           </ul>
           <form class="navbar-form pull-left" action="/search" methon="get" >
-            <input name="controller" value="<%= controller_name %>" type="hidden" />
-            <input name="q" type="text" class="search-query input-small" placeholder="Search" data-provide="typeahead" autocomplete="off" >
+            <input name="at" value="<%= params[:at] || controller_name %>" type="hidden" />
+            <input name="q" type="text" class="search-query" placeholder="Search" data-provide="typeahead" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" value="<%= params[:q]%>" >
             <!-- <button type="submit" class="btn">Search</button> -->
           </form>
           <ul class="nav pull-right">
@@ -56,7 +56,9 @@
                 <li><%= link_to "Home", "/#{current_user.username}" %></li>
                 <li><%= link_to 'Setting', user_setting_path(current_user) %></li>
                 <li>
-                    <a href="">Notifiction <span class="badge badge-info">0</span></a>
+                    <%= link_to notifictions_path do %>
+                        Notifiction <span class="badge badge-info"><%= current_user.notifictions.where(:unread => true).count %></span>
+                    <% end %>
                 </li>
                 <li><%= link_to "Sign out", sign_out_path, method: "delete" %></li>
               </ul>

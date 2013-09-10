@@ -1,13 +1,13 @@
 
 <div class="emp_express">
-<h3><%= t "emp.new.exp.title" %></h3>
+<h3><%= t "emp.new.exp.Experience" %></h3>
 <hr />
 <%= f.fields_for :experience do |experience_form| %>
 
 <div class="row-fluid">
 	<div class="span5 control-group" >
 		<div class="field">
-			<%= experience_form.label :company, t("emp.new.exp.lbl_company") %>
+			<%= experience_form.label :company, t("emp.new.exp.company") %>
 			<%= experience_form.text_field :company %>
 		</div>
 		<div class="field">
@@ -15,13 +15,13 @@
 			<%= experience_form.text_field :from, :type => 'date' %>
 		</div>
 		<div class="field">
-			<%= experience_form.label :reason, t("emp.new.exp.lbl_reason") %>
+			<%= experience_form.label :reason, t("emp.new.exp.reason") %>
 			<%= experience_form.text_field :reason %>
 		</div>
 	</div>
 	<div class="span5 control-group" >
 		<div class="field">
-			<%= experience_form.label :title, t("emp.new.exp.lbl_title") %>
+			<%= experience_form.label :title, t("emp.new.exp.title") %>
 			<%= experience_form.text_field :title %>
 		</div>
 		<div class="field">

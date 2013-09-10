@@ -20,22 +20,24 @@
 		</td>
 	</tr>
 	<tr>
-		<td rowspan="5">
+		<td rowspan="4">
 			<img src="<%= emp_avatar_path(@employee) %>" class="img-rounded avatar" />
 		</td>
 	</tr>
 	<tr>
-		<td colspan="4"><%= @employee.name %></td>
+		<td colspan="2"><%= @employee.name %></td>
+		<td colspan="3"><%= @employee.gender ? '男' : '女' %></td>
 	</tr>
 	<tr>
-		<td colspan="4"><%= @employee.gender ? '男' : '女' %></td>
+		<td colspan="2"><span class="label label-info"><%= @employee.birthday %></span></td>
+		<td colspan="3"><span class="label label-info"><%= @employee.telephone %></span></td>
 	</tr>
 	<tr>
-		<td colspan="4"><span class="label label-info"><%= @employee.birthday %></span></td>
+		
+		<td colspan="2"><span class="label label-info"><%= @employee.passport %></span></td>
+		<td colspan="3"><span class="label label-info"><%= @employee.address %></span></td>
 	</tr>
-	<tr>
-		<td colspan="4"><span class="label label-info"><%= @employee.passport %></span></td>
-	</tr>
+
 	<tr>
 		<td colspan="5">
 			<h3>工作经验</h3>
@@ -111,5 +113,26 @@
  			</table>
  		</td>
  	</tr>
+
+
+ 	<tr>
+		<td colspan="5">
+			<h3>附件</h3>
+		</td>
+	</tr>
+	<tr>
+		<td>文件名</td>
+		<td>描述</td>
+		<td>创建时间</td>
+		<td>编辑时间</td>
+	</tr>
+	<% @employee.attachments.each do |attach| %>
+ 	<tr class="well">
+ 		<td><%= attach.file %></td>
+ 		<td><%= attach.description %></td> 
+ 		<td><%= attach.created_at %></td> 
+ 		<td><%= attach.updated_at %></td> 	
+ 	</tr>
+ 	<% end %>
 
 </table>

@@ -4,12 +4,6 @@ ruby "2.0.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-group :development do 
-
-	gem 'sqlite3'
-
-end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -64,3 +58,19 @@ group :production do
 end
 
 gem 'carrierwave'
+
+#gem 'bootstrap-will_paginate'
+
+
+gem 'rails-i18n'
+
+#gem 'sunspot_rails'
+
+#gem 'progress_bar'
+# Use sqlite3 as the database for Active Record
+group :development do 
+
+	gem 'sqlite3'
+#    gem 'sunspot_solr'
+
+end

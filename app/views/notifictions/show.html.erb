@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @notifiction.user %>
+</p>
+
+<p>
+  <strong>Msg:</strong>
+  <%= @notifiction.msg %>
+</p>
+
+<p>
+  <strong>Unread:</strong>
+  <%= @notifiction.unread %>
+</p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @notifiction.sender %>
+</p>
+
+<%= link_to 'Edit', edit_notifiction_path(@notifiction) %> |
+<%= link_to 'Back', notifictions_path %>
