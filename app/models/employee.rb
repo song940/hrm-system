@@ -13,10 +13,6 @@ class Employee < ActiveRecord::Base
 	accepts_nested_attributes_for :experience, :allow_destroy => true
 	accepts_nested_attributes_for :attachments, :allow_destroy => true
 
-	searchable do
-	    text :name,:address,:passport,:telephone
-	end
-
 
 	def birthday
 		tmpDate = self[:passport][6,8]
