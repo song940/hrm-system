@@ -1,17 +1,23 @@
-<p>
-  <strong>Employee:</strong>
-  <%= @check.employee.name %>
-</p>
-
-<p>
-  <strong>Check in:</strong>
-  <%= @check.check_in %>
-</p>
-
-<p>
-  <strong>Check out:</strong>
-  <%= @check.check_out %>
-</p>
-
-<%= link_to 'Edit', edit_check_path(@check) %> |
-<%= link_to 'Back', checks_path %>
+<div class="well">
+	<select onchange="javascript:location.href=?month=this.value" >
+		<% 1.upto(12) do |month| %>
+		<option><%= "#{month}" %></option>
+		<% end %>
+	</select>
+</div>
+<table class="table">
+	<tr>
+		<th>Day</th>
+		<% 24.times do |hour| %>
+		<th><%= "#{hour}" %></th>
+		<% end %>
+	</tr>
+	<% 1.upto(31) do |day| %>
+	<tr>
+		<td style="background-color:gray"><%= "#{day}" %></td>
+		<td class="pre" colspan="1"></td>
+		<td class="mid" colspan="15" style="background-color:skyblue">8:00 - 18:00</td>
+		<td class="app" colspan="14"></td>
+	</tr>
+	<% end %>
+</table>

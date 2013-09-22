@@ -5,6 +5,8 @@ Hrm::Application.routes.draw do
 
   
 
+  resources :logs
+
   resources :notifictions
 
   get "search" => "search#index"
