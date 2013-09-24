@@ -1,14 +1,11 @@
 Hrm::Application.routes.draw do
 
 
- 
+  namespace :admin do
+    resources :dictionaries
+  end
 
-  
-
-  resources :logs
-
-  resources :notifictions
-
+  get "home/index"
   get "search" => "search#index"
   get "salary" => "salary#index"
 
@@ -18,8 +15,6 @@ Hrm::Application.routes.draw do
   resources :attachments
 
   resources :experiences
-
-  resources :dictionaries
 
   resources :trains
 
@@ -37,7 +32,18 @@ Hrm::Application.routes.draw do
 
   resources :helps
 
+  resources :notifictions
+
   resources :sessions, only: [:new, :create, :destroy]
+
+  namespace :admin do
+    root :to => "home#index"
+    
+    resources :users
+    resources :dictionaries
+  end
+
+  #get '/admin/log' => 'logs#index'
 
   match '/sign_up',                 to: 'users#new',         via: 'get'
   match '/sign_in',                 to: 'sessions#new',      via: 'get'
@@ -47,11 +53,10 @@ Hrm::Application.routes.draw do
   get "/:username/setting"  => "users#edit" , as: :user_profile
   get "/:username/destroy"  => "users#destroy"
 
+  match '/user/register',     to: 'users#create' ,  via: 'post'
+  match '/:username/update',  to: 'users#update' ,  via: 'patch'
+  match '/:username/destroy', to: 'users#destroy' ,  via: 'delete' , as: :delete_user
 
-
-  match '/user/register',      to: 'users#create' ,  via: 'post'
-  match '/:username/update',       to: 'users#update' ,  via: 'patch'
-  match '/:username/destroy',       to: 'users#destroy' ,  via: 'delete' , as: :delete_user
 
 
   

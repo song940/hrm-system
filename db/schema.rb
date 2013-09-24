@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911022143) do
+ActiveRecord::Schema.define(version: 20130923025912) do
+
+  create_table "admin_dictionaries", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "attachments", force: true do |t|
     t.text     "description"

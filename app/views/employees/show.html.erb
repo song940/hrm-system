@@ -125,6 +125,7 @@
 		<td>描述</td>
 		<td>创建时间</td>
 		<td>编辑时间</td>
+		<td>操作</td>
 	</tr>
 	<% @employee.attachments.each do |attach| %>
  	<tr class="well">
@@ -132,6 +133,11 @@
  		<td><%= attach.description %></td> 
  		<td><%= attach.created_at %></td> 
  		<td><%= attach.updated_at %></td> 	
+ 		<td>
+	 		<%=link_to  attach.file.to_s, :class => 'btn btn-mini' do %>
+	 			<i class="icon icon-edit" ></i> View
+	 		<% end %>
+ 		</td>
  	</tr>
  	<% end %>
 

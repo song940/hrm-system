@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title><%= yield(:title) %> | HRM System</title>
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="search" type="application/opensearchdescription+xml" title="HRM-System" href="/osdd.xml" />
+	<%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    "app", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "app", "data-turbolinks-track" => true %>
+	<%= render 'layouts/shim' %>
+</head>
+<body>
+	<%= render 'layouts/header' %>
+	<div class="clear nav-both"></div>
+	<div class="container">
+		<%= render 'layouts/fuckie' %>
+		<%= render 'layouts/flash' %>
+		<%= yield %>
+		<%= render 'layouts/footer' %>
+	</div>
+	<%# render 'layouts/olark' %>
+</body>
+<!--//**
+*
+*	just code for fun.
+*
+* 	App Environments:
+* 	--------------------------------------------------------
+* 	Ruby:  <%= RUBY_VERSION %><%= "-p#{RUBY_PATCHLEVEL}" if defined? RUBY_PATCHLEVEL %>
+* 	Rails: <%= Rails.version %>
+*/
+-->
+</html>
+
+  
+  
+  
+  

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard &middot; HRM-System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= render 'layouts/shim' %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+  </head>
+  <body>
+    <div class="container">
+		<div class="masthead">
+			<h3 class="muted"><%= link_to "Dashboard",root_path %></h3>
+			<div class="navbar">
+			  <div class="navbar-inner">
+			    <div class="container">
+			      <ul class="nav">
+			      	<%= nav_link "Home", admin_root_path %>
+			        <%= nav_link "用户管理", admin_users_path %>
+			        <%= nav_link "字典管理", admin_dictionaries_path %>
+			      </ul>
+			    </div>
+			  </div>
+			</div><!-- /.navbar -->
+		</div>
+	    <%= yield %>
+		<%= render 'layouts/footer' %>
+    </div> <!-- /container -->
+  </body>
+</html>

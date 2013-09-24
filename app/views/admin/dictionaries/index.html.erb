@@ -1,0 +1,31 @@
+<h1>Listing admin_dictionaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_dictionaries.each do |admin_dictionary| %>
+      <tr>
+        <td><%= admin_dictionary.name %></td>
+        <td><%= admin_dictionary.key %></td>
+        <td><%= admin_dictionary.value %></td>
+        <td><%= link_to 'Show', admin_dictionary %></td>
+        <td><%= link_to 'Edit', edit_admin_dictionary_path(admin_dictionary) %></td>
+        <td><%= link_to 'Destroy', admin_dictionary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dictionary', new_admin_dictionary_path %>

@@ -1,5 +1,5 @@
 <header>
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top <%= controller.class.to_s.deconstantize == 'Admin' ? 'navbar-inverse' : '' %>">
     <div id="nprogress">
       <div class="bar" role="bar" >
         <div class="peg"></div>
@@ -36,7 +36,7 @@
             <%= nav_link "薪资管理", salary_path %>
             <%= nav_link "培训管理", trains_path %>
           </ul>
-          <form class="navbar-form pull-left" action="/search" methon="get" >
+          <form class="navbar-search pull-left" action="/search" methon="get" >
             <input name="at" value="<%= params[:at] || controller_name %>" type="hidden" />
             <input name="q" type="text" class="search-query" placeholder="Search" data-provide="typeahead" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" value="<%= params[:q]%>" >
             <!-- <button type="submit" class="btn">Search</button> -->
@@ -60,6 +60,7 @@
                         Notifiction <span class="badge badge-info"><%= current_user.notifictions.where(:unread => true).count %></span>
                     <% end %>
                 </li>
+                <li><%= link_to('Dashboard', admin_root_path, :class => 'admin_link') if current_user.admin? %></li>
                 <li><%= link_to "Sign out", sign_out_path, method: "delete" %></li>
               </ul>
             </li>

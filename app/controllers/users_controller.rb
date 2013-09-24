@@ -2,16 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-  end
+
 
   # GET /users/1
   # GET /users/1.json
   def show
-    render "/errors/404", :status => 404 unless @user
   end
 
   # GET /users/new
@@ -68,6 +63,7 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find_by(:username => params[:username])
+      render "/errors/404", :status => 404 unless @user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

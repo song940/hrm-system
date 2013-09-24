@@ -11,7 +11,7 @@
     </div>
     <div class="field">
       <%= job_form.label :status, t("emp.new.job.lbl_status") %>
-      <%= job_form.collection_select :status, Dictionary.where(:name => "contract"), :key, :value, { :prompt => '选择合同类型' } %>
+      <%= job_form.collection_select :status, Admin::Dictionary.where(:name => "contract"), :key, :value, { :prompt => '选择合同类型' } %>
     </div>
   </div>
   <div class="span5 control-group" >
