@@ -4,4 +4,13 @@ class Admin::UsersController < Admin::ApplicationController
   def index
     @users = User.all
   end
+
+  def edit
+  	
+  end
+
+  def destroy
+  	flash[:success] = "OK"
+  	redirect_to admin_users_url
+  end
 end

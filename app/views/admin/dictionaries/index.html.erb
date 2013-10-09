@@ -1,12 +1,10 @@
-<h1>Listing admin_dictionaries</h1>
+<h1>字典映射</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-hover table-bordered " >   <thead>
     <tr>
       <th>Name</th>
       <th>Key</th>
       <th>Value</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -18,9 +16,16 @@
         <td><%= admin_dictionary.name %></td>
         <td><%= admin_dictionary.key %></td>
         <td><%= admin_dictionary.value %></td>
-        <td><%= link_to 'Show', admin_dictionary %></td>
-        <td><%= link_to 'Edit', edit_admin_dictionary_path(admin_dictionary) %></td>
-        <td><%= link_to 'Destroy', admin_dictionary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to edit_admin_dictionary_path(admin_dictionary), :class => "btn btn-mini" do %>
+            <i class="icon icon-edit"></i> Edit
+          <% end %>
+        </td>
+        <td>
+          <%= link_to  admin_dictionary, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" do %>
+            <i class="icon icon-trash icon-white" ></i> Delete
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
