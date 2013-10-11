@@ -31,7 +31,7 @@ module SessionsHelper
 
   	def signed_in_user
   		store_location
-      redirect_to sign_in_url, notice: "Please sign in." unless signed_in?
+      redirect_to sign_in_url, notice: I18n.t("user.require_login") unless signed_in?
     end
 
     def redirect_back_or(default)

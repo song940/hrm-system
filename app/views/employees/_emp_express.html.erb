@@ -1,6 +1,6 @@
 
 <div class="emp_express">
-<h3><%= t "emp.new.exp.Experience" %></h3>
+<h3><%= t "emp.new.experience" %></h3>
 <hr />
 <%= f.fields_for :experience do |experience_form| %>
 
@@ -32,7 +32,7 @@
 	
 </div>
 
-<%= experience_form.link_to_remove "移除工作经验", :class => "btn btn-mini btn-danger" %>
+<%= experience_form.link_to_remove t("emp.new.remove_experience"), :class => "btn btn-mini btn-danger" %>
 <% end %>
-<p><%= f.link_to_add "添加工作经验", :experience, :class => "btn btn-mini btn-primary" %></p>
+<p><%= f.link_to_add t("employee.new.experience.add_experience"), :experience, :class => "btn btn-mini btn-primary" %></p>
 </div>

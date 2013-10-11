@@ -1,7 +1,7 @@
 <% provide(:title, "Sign up") %>
 <div class="row">
   <div class="span6 offset3 well">
-  <h1>Sign up</h1>
+  <h1><%= t("user.sign_up")%></h1>
   <%= form_for(@user, :url => user_register_path) do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation" class="alert alert-error">
@@ -9,7 +9,6 @@
         <ul>
         <% @user.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
-
         <% end %>
         </ul>
       </div>
@@ -28,7 +27,7 @@
          <%= f.label :password %>
          <%= f.password_field :password ,:required => "required",:placeholder => "Password" %>
     </div>
-    <%= f.submit "Sign up", :class => "btn btn-success" %>
+    <%= f.submit t("user.sign_up"), :class => "btn btn-success" %>
   <% end %>
   </div>
 </div>

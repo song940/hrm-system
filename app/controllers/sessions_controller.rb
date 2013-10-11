@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
        #redirect_to user
        redirect_back_or "/#{user.username}"
     else
-      flash[:error] = 'Invalid email/password combination' # Not quite right!
+      flash[:error] = I18n.t("user.invalid") # Not quite right!
       render 'new'
     end
   end

@@ -20,21 +20,21 @@
           <ul class="nav">
             <li class="dropdown <%= active_controller_if("employees")%>">
                <%= link_to employees_path, :class => "dropdown-toggle" ,:data => { :toggle => 'dropdown' } do %>
-                人事管理
+                <%= t("nav.employee")%>
                 <% end %>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "添加员工", new_employee_path %></li>
-                  <li><%= link_to "员工列表", employees_path %></li>
+                  <li><%= link_to t("nav.add_employee"), new_employee_path %></li>
+                  <li><%= link_to t("nav.employees_list"), employees_path %></li>
                   <li class="divider"></li>
-                  <li class="nav-header">工作组</li>
-                  <li><%= link_to "组织结构", groups_path %></li>
-                  <li><%= link_to "添加工作组", new_group_path %></li>
+                  <li class="nav-header"><%= t("nav.group")%></li>
+                  <li><%= link_to t("nav.add_group"), new_group_path %></li>
+                  <li><%= link_to t("nav.group_list"), groups_path %></li>
                 </ul>
             </li>
-            <%= nav_link "考勤管理", checks_path %>
-            <%= nav_link "绩效管理", performances_path %>
-            <%= nav_link "薪资管理", salary_path %>
-            <%= nav_link "培训管理", trains_path %>
+            <%= nav_link t("nav.checks"), checks_path %>
+            <%= nav_link t("nav.performance"), performances_path %>
+            <%= nav_link t("nav.salary"), salary_path %>
+            <%= nav_link t("nav.train"), trains_path %>
           </ul>
           <form class="navbar-search pull-left" action="/search" methon="get" >
             <input name="at" value="<%= params[:at] || controller_name %>" type="hidden" />
@@ -42,7 +42,7 @@
             <!-- <button type="submit" class="btn">Search</button> -->
           </form>
           <ul class="nav pull-right">
-            <li><%= link_to "Help",  helps_path %></li>
+            <li><%= link_to t("nav.help"),  helps_path %></li>
             <li class="divider-vertical"></li>
             <% if signed_in? %>
 
@@ -53,20 +53,21 @@
                 <b class="caret"></b>
               <% end %>
               <ul class="dropdown-menu">
-                <li><%= link_to "Home", "/#{current_user.username}" %></li>
-                <li><%= link_to 'Setting', user_setting_path(current_user) %></li>
+                <li><%= link_to t("user.home"), "/#{current_user.username}" %></li>
+                <li><%= link_to t("user.setting"), user_setting_path(current_user) %></li>
                 <li>
                     <%= link_to notifictions_path do %>
-                        Notifiction <span class="badge badge-info"><%= current_user.notifictions.where(:unread => true).count %></span>
+                      <%=t("user.notifiction")%> 
+                      <span class="badge badge-info"><%= current_user.notifictions.where(:unread => true).count %></span>
                     <% end %>
                 </li>
-                <li><%= link_to('Dashboard', admin_root_path, :class => 'admin_link') if current_user.admin? %></li>
-                <li><%= link_to "Sign out", sign_out_path, method: "delete" %></li>
+                <li><%=link_to(t("user.dashboard"),admin_root_path,:class =>'admin_link') if current_user.admin? %></li>
+                <li><%= link_to t("user.sign_out"), sign_out_path, method: "delete" %></li>
               </ul>
             </li>
             <% else %>
-              <li><%= link_to "Sign in", sign_in_path %></li>
-              <li><%= link_to "Sign up", sign_up_path %></li>
+              <li><%= link_to t("user.sign_in"), sign_in_path %></li>
+              <li><%= link_to t("user.sign_up"), sign_up_path %></li>
             <% end %>
             
           </ul>

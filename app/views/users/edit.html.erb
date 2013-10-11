@@ -1,6 +1,6 @@
 <%provide(:title,"Settings")%>
 <div class="well">
-	<h1>Settings</h1>
+	<h1><%=t("user.setting")%></h1>
 
 <%= render 'form' %>
 
@@ -8,8 +8,8 @@
 	<h4 class="alert-heading">I'm unhappy , delete my account</h4>
 	<p>如果您觉得在使用过程中有任何不愉快 , 您可以</p>
 	<p>
-		<%= link_to '删除账户',delete_user_path(@user.username), method: :delete,:class => "btn btn-danger" , data: { confirm: 'Are you sure?' } %>
-		<a class="btn" href="mailto:i@lsong.org">或者告诉我们</a>
+		<%= link_to t("user.destroy"),delete_user_path(@user.username), method: :delete,:class => "btn btn-danger" , data: { confirm: 'Are you sure?' } %>
+		<a class="btn" href="mailto:i@lsong.org"><%= t("user.tell_me_why?")%></a>
 	</p>
 </div>
 </div>

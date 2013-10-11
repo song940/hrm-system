@@ -1,32 +1,59 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      create: "Add %{model}"
+      update: "Save  %{model}"
+  activerecord: 
+    errors:
+      models:
+        user:
+          name: "User"
+          attributes:
+            username:
+              too_long: "too long"
+              taken: "taken"
+              blank: "blank"
+            email:
+              invalid: "invalid"
+              taken: "taken"
+              blank: "blank"
+            password:
+              blank: "blank"
+
+  comm:
+    from: "from"
+    to: "to"
+    slogan: "Simple, efficient and fast enhance manpower management efficiency, reduce operating costs."
+  user:  
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    require_login: "Please sign in."
+    invalid: "Invalid email/password combination"
   emp: 
-    emp_new: 
-      title: "New employee"
-      emp_base: 
-        title: "Base information"
-      emp_express:  
-        title: "Work experience"
-      emp_education: 
+    new: 
+      title: "Add Employee"
+      base: 
+        title: "Base Infoimation"
+        lbl_name: "Name"
+        lbl_gender: "Gender"
+        lbl_passport: "Passport"
+      exp:  
+        title: "Experience"
+        lbl_company: "Company"
+        lbl_title: "Title"
+        lbl_reason: "Reason"
+      edu: 
         title: "Education"
+        btn_add: "Add Education"
+        btn_remove: "Remove Education"
+        lbl_institution: "Institution"
+        lbl_discipline: "Discipline"
+        lbl_level: "Level"
+      job:
+        title: "Job" 
+        lbl_salary: "Salary"
+        lbl_status: "Status"
+        lbl_title: "Title"
+
