@@ -1,9 +1,9 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
 <ShortName>HRM-System</ShortName>
 <Description>
-Description about your website search here
+Simple, efficient and fast enhance manpower management efficiency, reduce operating costs.
 </Description>
 <InputEncoding>UTF-8</InputEncoding>
 <Image width="16" height="16" type="image/x-icon">favicon</Image>
-<Url type="text/html" method="get" template="http://lsong.mac:3000/search?q={searchTerms}" />
+<Url type="text/html" method="get" template="http://hrm.lsong.org/search?q={searchTerms}" />
 </OpenSearchDescription>
