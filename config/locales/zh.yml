@@ -33,6 +33,11 @@ zh:
   user:
     sign_in: "登陆"
     sign_up: "注册"
+    sign_out: "退出"
+    home: "主页"
+    setting: "设置"
+    notifiction: "通知"
+    dashboard: "管理"
     require_login: "该操作需要在登陆后操作."
     invalid: "用户名或密码错误"
   checks:
