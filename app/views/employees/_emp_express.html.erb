@@ -1,13 +1,13 @@
 
 <div class="emp_express">
-<h3><%= t "emp.new.experience" %></h3>
+<h3><%= t "emp.exp.experience" %></h3>
 <hr />
 <%= f.fields_for :experience do |experience_form| %>
 
 <div class="row-fluid">
 	<div class="span5 control-group" >
 		<div class="field">
-			<%= experience_form.label :company, t("emp.new.exp.company") %>
+			<%= experience_form.label :company, t("emp.exp.company") %>
 			<%= experience_form.text_field :company %>
 		</div>
 		<div class="field">
@@ -15,13 +15,13 @@
 			<%= experience_form.text_field :from, :type => 'date' %>
 		</div>
 		<div class="field">
-			<%= experience_form.label :reason, t("emp.new.exp.reason") %>
+			<%= experience_form.label :reason, t("emp.exp.reason") %>
 			<%= experience_form.text_field :reason %>
 		</div>
 	</div>
 	<div class="span5 control-group" >
 		<div class="field">
-			<%= experience_form.label :title, t("emp.new.exp.title") %>
+			<%= experience_form.label :title, t("emp.exp.title") %>
 			<%= experience_form.text_field :title %>
 		</div>
 		<div class="field">
@@ -32,7 +32,7 @@
 	
 </div>
 
-<%= experience_form.link_to_remove t("emp.new.remove_experience"), :class => "btn btn-mini btn-danger" %>
+<%= experience_form.link_to_remove t("emp.exp.remove_experience"), :class => "btn btn-mini btn-danger" %>
 <% end %>
-<p><%= f.link_to_add t("employee.new.experience.add_experience"), :experience, :class => "btn btn-mini btn-primary" %></p>
+<p><%= f.link_to_add t("emp.exp.add_experience"), :experience, :class => "btn btn-mini btn-primary" %></p>
 </div>

@@ -35,41 +35,56 @@ zh:
     sign_up: "注册"
     require_login: "该操作需要在登陆后操作."
     invalid: "用户名或密码错误"
-  nav:
+  checks:
+    checks: "考勤管理"
+  performance: 
+    performance: "绩效管理"
+  salary:
+    salary: "薪资管理"
+  train:
+    train: "培训管理"
+  help: 
+    help: "帮助"
+  emp: 
     employee: "人员管理"
     add_employee: "添加员工"
     employees_list: "员工列表"
+    base:
+      base_infoimation: " 基本信息"
+      name: "姓名"
+      gender: "性别"
+      passport: "身份证"
+      telephone: "手机号码"
+      address: "住址"
+    exp:  
+      experience: "工作经验"
+      company: "就职单位"
+      title: "职称"
+      reason: "离职原因"
+      add_experience: "添加工作经验"
+      remove_experience: "移除工作经验"
+    edu: 
+      education: "教育经历"
+      add_education: "添加教育经历"
+      remove_education: "移除教育经历"
+      institution: "教育院校"
+      discipline: "专业"
+      level: "教育水平"
+    att:
+      attachments: "附件"
+      file: "文件描述"
+      select_a_file: "请选择文件"
+      add_attachments: "添加附件"
+      remove_attachments: "移除附件"
+    job:
+      title: "分配工作" 
+      lbl_salary: "基本薪资"
+      lbl_status: "合同"
+      lbl_title: "职位"
+  group:
     group: "工作组"
     add_group: "添加工作组"
     group_list: "工作组列表"
-    checks: "考勤管理"
-    performance: "绩效管理"
-    salary: "薪资管理"
-    train: "培训管理"
-    help: "帮助"
-  emp: 
-    new: 
-      title: "添加员工"
-      base: 
-        title: "基本信息"
-        lbl_name: "姓名"
-        lbl_gender: "性别"
-        lbl_passport: "身份证"
-      exp:  
-        title: "工作经验"
-        lbl_company: "就职单位"
-        lbl_title: "职称"
-        lbl_reason: "离职原因"
-      edu: 
-        title: "教育经历"
-        btn_add: "添加教育经历"
-        btn_remove: "移除教育经历"
-        lbl_institution: "教育院校"
-        lbl_discipline: "专业"
-        lbl_level: "教育水平"
-      job:
-        title: "分配工作" 
-        lbl_salary: "基本薪资"
-        lbl_status: "合同"
-        lbl_title: "职位"
-
+    parent: "隶属组"
+    name: "组名称"
+    salary: "成员薪资"

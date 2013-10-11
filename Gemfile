@@ -74,3 +74,5 @@ group :development do
 #    gem 'sunspot_solr'
 
 end
+
+gem "font-awesome-rails"

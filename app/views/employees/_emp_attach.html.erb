@@ -1,19 +1,19 @@
 <div class="emp_attach">
-	<h3><%= t('emp.attachments')%></h3>
+	<h3><%= t('emp.att.attachments')%></h3>
 	<hr />
 	<%= f.fields_for :attachments do |attach_form| %>
 
 		<div class="field">
-			<%= attach_form.label :file %>
+			<%= attach_form.label :file, t("emp.att.file") %>
 			
 		 <div class="input-append">
 		 	<%= attach_form.text_field :description %>
 		 	<%= attach_form.file_field :file, :class => 'hide' %>	
-		 	<button class="btn btn-upload" type="button"><i class="icon-upload"></i> Select a file</button>
+		 	<button class="btn btn-upload" type="button"><i class="icon-upload"></i> <%= t("emp.att.select_a_file")%></button>
 		 </div>
 		</div>
 
-		<%= attach_form.link_to_remove t("emp.remove_attachments"), :class => "btn btn-mini btn-danger" %>
+		<%= attach_form.link_to_remove t("emp.att.remove_attachments"), :class => "btn btn-mini btn-danger" %>
 	<% end %>
-<p><%= f.link_to_add t("emp.add_attachments"), :attachments, :class => "btn btn-mini btn-primary" %></p>
+<p><%= f.link_to_add t("emp.att.add_attachments"), :attachments, :class => "btn btn-mini btn-primary" %></p>
 </div>

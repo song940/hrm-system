@@ -23,8 +23,6 @@ en:
               blank: "blank"
 
   comm:
-    from: "from"
-    to: "to"
     slogan: "Simple, efficient and fast enhance manpower management efficiency, reduce operating costs."
   user:  
     sign_in: "Sign in"

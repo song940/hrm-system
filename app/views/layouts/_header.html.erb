@@ -23,21 +23,21 @@
           <ul class="nav">
             <li class="dropdown <%= active_controller_if("employees")%>">
                <%= link_to employees_path, :class => "dropdown-toggle" ,:data => { :toggle => 'dropdown' } do %>
-                <%= t("nav.employee")%>
+                <%= t("emp.employee")%>
                 <% end %>
                 <ul class="dropdown-menu">
-                  <li><%= link_to t("nav.add_employee"), new_employee_path %></li>
-                  <li><%= link_to t("nav.employees_list"), employees_path %></li>
+                  <li><%= link_to t("emp.add_employee"), new_employee_path %></li>
+                  <li><%= link_to t("emp.employees_list"), employees_path %></li>
                   <li class="divider"></li>
-                  <li class="nav-header"><%= t("nav.group")%></li>
-                  <li><%= link_to t("nav.add_group"), new_group_path %></li>
-                  <li><%= link_to t("nav.group_list"), groups_path %></li>
+                  <li class="nav-header"><%= t("group.group")%></li>
+                  <li><%= link_to t("group.add_group"), new_group_path %></li>
+                  <li><%= link_to t("group.group_list"), groups_path %></li>
                 </ul>
             </li>
-            <%= nav_link t("nav.checks"), checks_path %>
-            <%= nav_link t("nav.performance"), performances_path %>
-            <%= nav_link t("nav.salary"), salary_path %>
-            <%= nav_link t("nav.train"), trains_path %>
+            <%= nav_link t("checks.checks"), checks_path %>
+            <%= nav_link t("performance.performance"), performances_path %>
+            <%= nav_link t("salary.salary"), salary_path %>
+            <%= nav_link t("train.train"), trains_path %>
           </ul>
           <form class="navbar-search pull-left" action="/search" methon="get" >
             <input name="at" value="<%= params[:at] || controller_name %>" type="hidden" />
@@ -45,7 +45,7 @@
             <!-- <button type="submit" class="btn">Search</button> -->
           </form>
           <ul class="nav pull-right">
-            <li><%= link_to t("nav.help"),  helps_path %></li>
+            <li><%= link_to t("help.help"),  helps_path %></li>
             <li class="divider-vertical"></li>
             <% if signed_in? %>
 

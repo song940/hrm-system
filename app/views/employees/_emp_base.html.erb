@@ -1,24 +1,24 @@
  <div id="emp_base" >
- 	<h3><%= t "emp.new.base_infoimation" %></h3>
+ 	<h3><%= t "emp.base.base_infoimation" %></h3>
  	<hr />
  	 <div class="row-fluid" >
 		<div class="span5 control-group" >
 			<div class="field">
-		    <%= f.label :name , t("emp.new.base.name") %>
+		    <%= f.label :name , t("emp.base.name") %>
 		    <%= f.text_field :name, :required => 'required', :placeholder => 'Firstname Lastname' %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :telephone  %>
+		    <%= f.label :telephone, t("emp.base.telephone")  %>
 		    <%= f.text_field :telephone, :required => 'required', :placeholder => '' %>
 		  </div>
 		</div>
 		<div class="span5 control-group" >
 			<div class="field">
-	    		<%= f.label :passport, t("emp.new.base.passport") %>
+	    		<%= f.label :passport, t("emp.base.passport") %>
 	    		<%= f.text_field :passport, :required => 'required', :pattern => "[0-9]{17}[0-9X]", :maxlength=> '18', :title => "passport" %>
 	  		</div>
 	  		<div class="field">
-	    		<%= f.label :address %>
+	    		<%= f.label :address,t("emp.base.address") %>
 	    		<%= f.text_field :address, :required => 'required' %>
 	  		</div>
 		</div>

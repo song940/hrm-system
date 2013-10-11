@@ -12,15 +12,15 @@
   <% end %>
 <div class="well">
   <div class="field">
-    <%= f.label :group_id %>
+    <%= f.label :group_id, t("group.parent") %>
     <%= f.collection_select :group_id, Group.all, :id, :name, { :prompt => '公司顶层' } %>
   </div>
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name,t("group.name") %>
     <%= f.text_field :name %>
   </div>
     <div class="field">
-    <%= f.label :salary %>
+    <%= f.label :salary,t("group.salary") %>
     <div class="input-group input-prepend input-append ">
       <span class="add-on">￥</span>
       <%= f.number_field :salary ,:class => "input-medium" %>

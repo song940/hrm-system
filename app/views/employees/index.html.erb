@@ -1,12 +1,14 @@
 <% provide(:title, '人事管理') %>
-<h1>员工列表</h1>
+<h1><%= t("emp.employees_list")%></h1>
 
 <table class="table table-striped table-hover table-bordered " >
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Telephone</th>
+      <th><%= t("emp.base.name")%></th>
+      <th><%= t("emp.base.gender")%></th>
+      <th><%= t("emp.base.telephone")%></th>
+      <th></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
