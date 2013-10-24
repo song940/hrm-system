@@ -29,20 +29,10 @@ ActiveRecord::Schema.define(version: 20130923025912) do
     t.datetime "updated_at"
   end
 
-  add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id"
+  add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id", using: :btree
 
   create_table "checks", force: true do |t|
     t.integer  "employee_id"
-    t.date     "check_in"
-    t.date     "check_out"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "dictionaries", force: true do |t|
-    t.string   "name"
-    t.string   "key"
-    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -122,7 +112,7 @@ ActiveRecord::Schema.define(version: 20130923025912) do
     t.datetime "updated_at"
   end
 
-  add_index "notifictions", ["user_id"], name: "index_notifictions_on_user_id"
+  add_index "notifictions", ["user_id"], name: "index_notifictions_on_user_id", using: :btree
 
   create_table "performances", force: true do |t|
     t.integer  "employee_id"
@@ -155,8 +145,8 @@ ActiveRecord::Schema.define(version: 20130923025912) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

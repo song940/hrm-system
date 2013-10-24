@@ -1,22 +1,22 @@
 
 <div class="emp_jobs">
-<h3><%= t "emp.new.jobs" %></h3>
+<h3><%= t "emp.job.jobs" %></h3>
 <hr />
 <%= f.fields_for :job do |job_form| %>
 <div class="row-fluid">
   <div class="span5 control-group" >
     <div class="field">
-      <%= job_form.label :group_id %>
+      <%= job_form.label :group_id ,t("emp.job.status")%>
       <%= job_form.collection_select :group_id, Group.all, :id, :name, { :prompt => '选择部门' } %>
     </div>
     <div class="field">
-      <%= job_form.label :status, t("emp.new.job.lbl_status") %>
+      <%= job_form.label :status, t("emp.job.status") %>
       <%= job_form.collection_select :status, Admin::Dictionary.where(:name => "contract"), :key, :value, { :prompt => '选择合同类型' } %>
     </div>
   </div>
   <div class="span5 control-group" >
     <div class="field">
-    <%= job_form.label :salary, t("emp.new.job.lbl_salary") %>
+    <%= job_form.label :salary, t("emp.job.salary") %>
     <%= job_form.number_field :salary %>
   </div>
   </div>
@@ -36,8 +36,8 @@
   </div>
 </div>
 
-<%= job_form.link_to_remove "移除工作项目", :class => "btn btn-mini btn-danger" %>
+<%= job_form.link_to_remove t("emp.job.remove_job"), :class => "btn btn-mini btn-danger" %>
 <% end %>
-<p><%= f.link_to_add "添加工作项目", :job, :class => "btn btn-mini btn-primary" %></p>
+<p><%= f.link_to_add t("emp.job.add_job"), :job, :class => "btn btn-mini btn-primary" %></p>
 </div>
 

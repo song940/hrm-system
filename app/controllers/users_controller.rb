@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       #Mailer.welcome(@user.email).deliver
-      flash[:success] = "Welcome to the HRM System!"
+      flash[:success] = t("comm.welcome")
       redirect_to user_path @user.username
     else
       render 'new'
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     #Mailer.welcome(@user.email).deliver
-    flash[:info] = "您的账户已经成功删除 , 但是我们希望能够再次见到您."  if @user.destroy
+    flash[:info] = I18n.t("comm.come_back")  if @user.destroy
     respond_to do |format|
       format.html { redirect_to root_url }
       format.json { head :no_content }

@@ -7,7 +7,7 @@ This is the source code of [HRM System](https://hrm-system.herokuapp.com) websit
 
 ## Requirements
 
-* Ruby 1.9.3 +
+* Ruby 2.0.0
 
 ## Install
 
@@ -19,12 +19,14 @@ bundle install
 
 rails s
 ```
+
 ## License
 
-Copyright (c) 2013 by [LSONG.ORG](http://lsong.org)
+Copyright (c) 2013 by [LSONG.ORG](https://lsong.org)
 
 
 Released under the MIT license:
 
+* [lsong.mit-license.org](http://lsong.mit-license.org)
 * [www.opensource.org/licenses/MIT](http://www.opensource.org/licenses/MIT)
 

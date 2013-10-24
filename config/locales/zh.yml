@@ -3,8 +3,12 @@ zh:
   helpers:
     submit:
       create: "创建 %{model}"
-      update: "更新 %{model}"
+      update: "保存 %{model}"
   activerecord: 
+    models:
+      user: "用户"
+      employee: "员工"
+      group: "工作组"
     errors:
       models:
         user:
@@ -20,6 +24,8 @@ zh:
               blank: "blank"
             password:
               blank: "blank"
+        employee:
+          name: "员工"
 
   comm:
     from: "从"
@@ -27,8 +33,11 @@ zh:
     slogan: "简单, 高效, 快速提升企业人力管理效率, 降低企业运行成本."
     join_now: "现在加入"
     simple: "简单"
+    simple_text: "简单易用的界面设计, 使您轻松应对各项功能使用 ."
     fast: "快速"
+    fast_text: "快速的界面响应, 流畅的使用体验 ."
     efficient: "高效" 
+    efficient_text: "高效开展您的工作"
     more: "了解更多"    
   user:
     sign_in: "登陆"
@@ -82,10 +91,12 @@ zh:
       add_attachments: "添加附件"
       remove_attachments: "移除附件"
     job:
-      title: "分配工作" 
-      lbl_salary: "基本薪资"
-      lbl_status: "合同"
-      lbl_title: "职位"
+      jobs: "分配工作" 
+      salary: "基本薪资"
+      status: "合同"
+      title: "职位"
+      add_job: "添加工作"
+      remove_job: "移除工作"
   group:
     group: "工作组"
     add_group: "添加工作组"
