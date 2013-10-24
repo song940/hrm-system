@@ -12,7 +12,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 set :app,         'hrm-system'
 set :domain,      'lsong.org'
 set :deploy_to,   '/home/lsong/hrm-system'
-set :repository,  'https://github.com/song940/hrm-system.git'
+set :repository,  'https://lsong.org/~git/hrm-system.git'
 set :branch,      'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
@@ -61,7 +61,9 @@ task :deploy => :environment do
 
     to :launch do
       #queue "touch #{deploy_to}/tmp/restart.txt"
-      #invoke :'unicorn:restart'
+      #invoke :'unicorn:restart'unicorn_rails 
+      queue "cd #{deploy_to}/current && RAILS_ENV=production nohup ./bin/unicorn_rails -c ./config/unicorn.rb &"
+      #
     end
   end
 end
