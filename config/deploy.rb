@@ -23,6 +23,8 @@ set :shared_paths, ['config/database.yml', 'log']
 set :user, 'lsong'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
 
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
@@ -62,7 +64,7 @@ task :deploy => :environment do
     to :launch do
       #queue "touch #{deploy_to}/tmp/restart.txt"
       #invoke :'unicorn:restart'unicorn_rails 
-      queue "cd #{deploy_to}/current && RAILS_ENV=production nohup ./bin/unicorn_rails -c ./config/unicorn.rb &"
+      queue "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
       #
     end
   end
