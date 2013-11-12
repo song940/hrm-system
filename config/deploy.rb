@@ -23,8 +23,9 @@ set :shared_paths, ['config/database.yml', 'log']
 set :user, 'lsong'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
 
-set :unicorn_config, "#{current_path}/config/unicorn.rb"
-set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
+set :app_path, "#{deploy_to}/#{current_path}"
+set :unicorn_config, "config/unicorn.rb"
+set :unicorn_pid, "tmp/pids/unicorn.pid"
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
@@ -64,12 +65,48 @@ task :deploy => :environment do
     to :launch do
       #queue "touch #{deploy_to}/tmp/restart.txt"
       #invoke :'unicorn:restart'unicorn_rails 
-      queue "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
-      #
+      invoke :'unicorn:restart'
     end
   end
 end
 
+#                                                                       Unicorn
+# ==============================================================================
+namespace :unicorn do
+  set :start_unicorn, %{
+    cd #{app_path}
+    bundle exec unicorn -c #{unicorn_config}
+  }
+ 
+#                                                                    Start task
+# ------------------------------------------------------------------------------
+  desc "Start unicorn"
+  task :start => :environment do
+    queue 'echo "-----> Start Unicorn"'
+    queue! start_unicorn
+  end
+ 
+#                                                                     Stop task
+# ------------------------------------------------------------------------------
+  desc "Stop unicorn"
+  task :stop do
+    queue 'echo "-----> Stop Unicorn"'
+    queue! %{
+      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
+      echo >&2 "Not running"
+    }
+  end
+ 
+#                                                                  Restart task
+# ------------------------------------------------------------------------------
+  desc "Restart unicorn"
+  task :restart => :environment do
+    #invoke 'unicorn:stop'
+    #invoke 'unicorn:start'
+    queue "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
+    #
+  end
+end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
