@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923025912) do
+ActiveRecord::Schema.define(version: 20131119092954) do
+
+  create_table "admin_checks", force: true do |t|
+    t.date     "date"
+    t.decimal  "year"
+    t.decimal  "month"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admin_dictionaries", force: true do |t|
     t.string   "name"
@@ -29,7 +37,7 @@ ActiveRecord::Schema.define(version: 20130923025912) do
     t.datetime "updated_at"
   end
 
-  add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id", using: :btree
+  add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id"
 
   create_table "checks", force: true do |t|
     t.integer  "employee_id"
@@ -112,7 +120,7 @@ ActiveRecord::Schema.define(version: 20130923025912) do
     t.datetime "updated_at"
   end
 
-  add_index "notifictions", ["user_id"], name: "index_notifictions_on_user_id", using: :btree
+  add_index "notifictions", ["user_id"], name: "index_notifictions_on_user_id"
 
   create_table "performances", force: true do |t|
     t.integer  "employee_id"
@@ -145,8 +153,8 @@ ActiveRecord::Schema.define(version: 20130923025912) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

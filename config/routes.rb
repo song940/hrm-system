@@ -1,16 +1,11 @@
 Hrm::Application.routes.draw do
 
-
-  namespace :admin do
-    resources :dictionaries
-  end
-
   get "home/index"
   get "search" => "search#index"
   get "salary" => "salary#index"
 
 
-
+  post 'checks/import' => "checks#import"
 
   resources :attachments
 
@@ -38,9 +33,13 @@ Hrm::Application.routes.draw do
 
   namespace :admin do
     root :to => "home#index"
-    
+  
     resources :users
     resources :dictionaries
+
+    get '/checks' => "checks#index"
+    get '/checks/mark'
+    get '/checks/list'
   end
 
   #get '/admin/log' => 'logs#index'

@@ -24,6 +24,9 @@ window.App =
   log: (msg)->
     console.log(msg)
 
+  locale: ()->
+    document.cookie = "locale=" + navigator.language + ';'
+
   fackie: ()->
     $('.fuck-ie').remove() unless /MSIE/.test(navigator.userAgent)
 
@@ -48,6 +51,7 @@ window.App =
     NProgress.done(true)
 
     App.fackie()
+    #App.locale()
 
 
 

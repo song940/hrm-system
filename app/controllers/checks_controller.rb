@@ -61,6 +61,21 @@ class ChecksController < ApplicationController
     end
   end
 
+  def import
+    uploaded_io = params[:file]
+    file_content = uploaded_io.read
+    index = -1
+    file_content.each_line do |line|
+      index+=1
+      next if index == 0
+      data = line.force_encoding("iso-8859-1").split(/\t/)
+      m_NO,m_TMNo,m_EnNo,m_Name,m_GMNo,m_Mode,m_DateTime = data
+      logger.debug "#{m_NO}\t#{m_EnNo}\t#{m_DateTime}"
+    end
+    flash[:success] = "成功导入 #{index} 条"
+    redirect_to checks_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_check

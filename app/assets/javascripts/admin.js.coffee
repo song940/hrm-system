@@ -14,3 +14,36 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap
+#= require calendar
+
+window.App =
+	init: () ->
+		$('.nav-tabs').tab()
+		$('.btn-edit').click (ev) ->
+			ev.preventDefault()
+			console.log this
+
+	check: ()->
+		$(document).on "click","td.normal", (ev) -> 
+			$that = $(ev.target)
+			day = $that.data('day')
+			date = $that.closest('table').data('date') + "-" + day
+			mark = !$that.hasClass('active')
+			$.get('/admin/checks/mark',{ flag: mark,date: date },()->
+				$that.removeClass('active') unless mark
+				$that.addClass('active') if mark
+			)
+		$('#month .btn').click (ev)->
+			month = this.innerText
+			$.get('/admin/checks/list',{ month: month, year:new Date().getFullYear() },(data)->
+				console.log data
+				$("#calendar").calendar({month: month, active: data })
+			)
+		#
+		$('#month .btn')[new Date().getMonth()].click()
+
+
+
+$(document).ready ->
+	App.init()
+	App.check()

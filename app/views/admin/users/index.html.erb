@@ -5,24 +5,28 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Admin</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
         <td>
-          <%= link_to "Edit",edit_admin_user_path(user),:class=>'btn btn-mini' %>
-          <%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %>
+          <div class="btn-group">
+            <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><i class="icon icon-user"></i> <%= user.name %> <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>
+                <a href=""><i class="icon icon-edit"></i> Edit</a>
+                <a href=""><i class="icon icon-trash"></i> Delete</a>
+                <a href=""><i class="icon icon-user"></i> Make Admin</a>
+              </li>
+            </ul>
+          </div>
         </td>
+        <td><%= user.email %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', sign_up_path %>

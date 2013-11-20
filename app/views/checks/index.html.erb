@@ -1,3 +1,11 @@
 <div class="container well">
-  <button class="btn btn-info btn-large">Import</button>
+<%= form_tag '/checks/import'  , multipart: true do  %>
+	<div class="input-append">
+  		<label>导入文件:</label>
+		<input type="file" class="hide" name="file" />
+		<input name="check" type="text" />
+	  	<button class="btn btn-upload" type="button">浏览</button>
+	  	<button class="btn btn-primary" type="submit">导入</button>
+	</div>
+<% end %>
 </div>
