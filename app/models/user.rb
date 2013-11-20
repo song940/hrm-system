@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(password)
+    logger.info password
   	self.password == User.encrypt("pass#{password}word")
   end
 

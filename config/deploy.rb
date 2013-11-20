@@ -66,17 +66,15 @@ end
 #                                                                       Unicorn
 # ==============================================================================
 namespace :unicorn do
-  set :start_unicorn, %{
-    cd #{app_path}
-    bundle exec unicorn_rails -c #{unicorn_config} -E production -D
-  }
- 
 #                                                                    Start task
 # ------------------------------------------------------------------------------
   desc "Start unicorn"
   task :start => :environment do
     queue 'echo "-----> Start Unicorn"'
-    queue! start_unicorn
+    queue! %{
+      cd #{app_path}
+      bundle exec unicorn_rails -c #{unicorn_config} -e production -D
+    }
   end
  
 #                                                                     Stop task
@@ -85,7 +83,7 @@ namespace :unicorn do
   task :stop do
     queue 'echo "-----> Stop Unicorn"'
     queue! %{
-      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "\tStop Ok" && exit 0
+      test -s #{unicorn_pid} && kill -QUIT `cat "#{unicorn_pid}"` && echo "\tStop Ok" && exit 0
       echo >&2 "\tNot running"
     }
   end
@@ -98,8 +96,8 @@ namespace :unicorn do
     #invoke 'unicorn:start'
     queue 'echo "-----> Restart Unicorn"'
     queue! %{
-      if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi
-      echo >&2 "\tNot running"
+      test -s #{unicorn_pid} && kill -s USR2 `cat #{unicorn_pid}` 
+      exit 0
     }
   end
 end
