@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
 
 	before_save { self.email = email.downcase }
   before_update :generate_secure_password
-	before_create :generate_secure_password
   before_create :generate_default_name
 
 	def User.encrypt(token)
@@ -24,7 +23,6 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(password)
-    logger.info password
   	self.password == User.encrypt("pass#{password}word")
   end
 
@@ -32,6 +30,7 @@ private
 
   def generate_secure_password
     self.password = User.encrypt("pass#{self.password}word")
+    #logger.info "logger => #{self.password}"
   end
 
   def generate_default_name

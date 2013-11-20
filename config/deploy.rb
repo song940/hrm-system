@@ -73,7 +73,7 @@ namespace :unicorn do
     queue 'echo "-----> Start Unicorn"'
     queue! %{
       cd #{app_path}
-      bundle exec unicorn_rails -c #{unicorn_config} -e production -D
+      RAILS_ENV=production bundle exec unicorn_rails -c #{unicorn_config} -D
     }
   end
  
