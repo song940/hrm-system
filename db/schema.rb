@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119092954) do
+ActiveRecord::Schema.define(version: 20131122024032) do
 
   create_table "admin_checks", force: true do |t|
     t.date     "date"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131119092954) do
     t.datetime "updated_at"
   end
 
-  create_table "admin_dictionaries", force: true do |t|
+  create_table "admin_settings", force: true do |t|
     t.string   "name"
     t.string   "key"
     t.string   "value"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20131119092954) do
   end
 
   add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id"
+
+  create_table "check_infos", force: true do |t|
+    t.decimal  "tm"
+    t.decimal  "en"
+    t.string   "name"
+    t.decimal  "gm"
+    t.decimal  "mode"
+    t.datetime "chk"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "checks", force: true do |t|
     t.integer  "employee_id"
@@ -61,6 +72,7 @@ ActiveRecord::Schema.define(version: 20131119092954) do
     t.string   "passport"
     t.string   "telephone"
     t.string   "address"
+    t.integer  "fingerkey"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,16 +123,14 @@ ActiveRecord::Schema.define(version: 20131119092954) do
     t.datetime "updated_at"
   end
 
-  create_table "notifictions", force: true do |t|
-    t.integer  "user_id"
+  create_table "msgs", force: true do |t|
     t.integer  "sender"
-    t.text     "msg"
+    t.integer  "receiver"
     t.boolean  "unread"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "notifictions", ["user_id"], name: "index_notifictions_on_user_id"
 
   create_table "performances", force: true do |t|
     t.integer  "employee_id"
@@ -143,18 +153,18 @@ ActiveRecord::Schema.define(version: 20131119092954) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "name"
     t.string   "email"
+    t.string   "token"
+    t.string   "username"
+    t.string   "fullname"
     t.string   "password"
-    t.boolean  "admin"
-    t.string   "remember_token"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["token"], name: "index_users_on_token"
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

@@ -1,11 +1,41 @@
-<div class="container well">
-<%= form_tag '/checks/import'  , multipart: true do  %>
-	<div class="input-append">
-  		<label>导入文件:</label>
-		<input type="file" class="hide" name="file" />
-		<input name="check" type="text" />
-	  	<button class="btn btn-upload" type="button">浏览</button>
-	  	<button class="btn btn-primary" type="submit">导入</button>
-	</div>
+<div class="checks">
+<h1>考勤记录</h1>
+<%= form_tag '',:class => 'form-inline well',:method => 'get' do %>
+<legend>查询</legend>
+<label>考勤日期</label>
+<div class="btn-group" data-toggle="buttons-radio">
+  <button type="button" class="btn">1</button>
+  <button type="button" class="btn">2</button>
+  <button type="button" class="btn">3</button>
+  <button type="button" class="btn">4</button>
+  <button type="button" class="btn">5</button>
+  <button type="button" class="btn">6</button>
+
+  <button type="button" class="btn">7</button>
+  <button type="button" class="btn">8</button>
+  <button type="button" class="btn">9</button>
+  <button type="button" class="btn">10</button>
+  <button type="button" class="btn">11</button>
+  <button type="button" class="btn">12</button>
+</div>
+<%= select_tag :level, options_from_collection_for_select(Employee.all,:id,:name),:prompt => "Select something" %>
+<div  id="month" class="btn-group" data-toggle="buttons-radio">
+  <button type="button" class="btn">病假</button>
+  <button type="button" class="btn">事假</button>
+  <button type="button" class="btn">其他</button>
+</div>
+<button class="btn btn-primary">查询</button>
 <% end %>
+<div class="well">
+<%= form_tag '/checks/import'  , multipart: true, :class => 'form-inline import' do  %>
+  <div class="input-append">
+      <label>导入文件:</label>
+      <span class="addon" >11</span>
+      <input type="file" class="hide" name="file" />
+      <input name="check" type="text" readonly="readonly" />
+      <button class="btn btn-upload" type="button">浏览</button>
+      <button class="btn btn-primary" type="submit">导入</button>
+  </div>
+<% end %>
+</div>
 </div>

@@ -21,14 +21,6 @@ module ApplicationHelper
 		end
 	end
 
-	def user_path
-		"/#{current_user.username}"
-	end
-
-	def user_setting_path(user)
-		"#{user_path}/setting"
-	end
-
 	def pagination_links(collection, options = {})
 	   options[:renderer] ||= BootstrapPaginationHelper::LinkRenderer
 	   options[:class] ||= 'pagination pagination-centered'

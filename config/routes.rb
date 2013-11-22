@@ -1,4 +1,7 @@
 Hrm::Application.routes.draw do
+  namespace :admin do
+    
+  end
 
   get "home/index"
   get "search" => "search#index"
@@ -27,34 +30,37 @@ Hrm::Application.routes.draw do
 
   resources :helps
 
-  resources :notifictions
-
   resources :sessions, only: [:new, :create, :destroy]
 
   namespace :admin do
     root :to => "home#index"
   
     resources :users
-    resources :dictionaries
+    resources :settings
 
     get '/checks' => "checks#index"
     get '/checks/mark'
     get '/checks/list'
+    post "/checks/setting"
   end
 
   #get '/admin/log' => 'logs#index'
 
-  match '/sign_up',                 to: 'users#new',         via: 'get'
-  match '/sign_in',                 to: 'sessions#new',      via: 'get'
-  match '/sign_out',                to: 'sessions#destroy',  via: 'delete'
+  match '/sign_up',           to: 'users#new',         via: 'get'
+  match '/sign_in',           to: 'sessions#new',      via: 'get'
+  match '/sign_out',          to: 'sessions#destroy',  via: 'delete'
+  match '/user/register',     to: 'users#create' ,     via: 'post'
+  match '/user/verify/:email',to: 'users#verify' ,     via: 'get', as: :user_verify
+  match '/user/active'       ,to: 'users#active' ,     via: 'get', as: :user_active
 
-  get "/:username"          => "users#show" ,     as: :user
-  get "/:username/setting"  => "users#edit" , as: :user_profile
-  get "/:username/destroy"  => "users#destroy"
+  
+  match "/:username",         to: "users#show" ,       via: 'get',    as: :user_home
+  match "/:username/msg",     to: "users#msg" ,        via: 'get',    as: :user_msg
+  match "/:username/setting", to: "users#edit" ,       via: 'get',    as: :user_setting
+  match '/:username/update',  to: 'users#update' ,     via: 'patch',  as: :user_update
+  match "/:username/destroy", to: "users#destroy",     via: 'delete', as: :user_delete
+  match "/:username/reset",   to: "users#reset",       via: 'post', as: :user_reset
 
-  match '/user/register',     to: 'users#create' ,  via: 'post'
-  match '/:username/update',  to: 'users#update' ,  via: 'patch'
-  match '/:username/destroy', to: 'users#destroy' ,  via: 'delete' , as: :delete_user
 
 
 

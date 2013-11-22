@@ -32,18 +32,18 @@
             <% if signed_in? %>
 
             <li class="dropdown">
-              <%= link_to user_profile_path(current_user) ,:class => "dropdown-toggle", :data => { :toggle => 'dropdown' } do %>
+              <%= link_to user_home_path(current_user),:class => "dropdown-toggle", :data => { :toggle => 'dropdown' } do %>
                 <%= gravatar_for current_user,size: 20, class: 'img-circle' %>
-                <%= current_user.name %>
+                <%= h(current_user.fullname) %>
                 <b class="caret"></b>
               <% end %>
               <ul class="dropdown-menu">
-                <li><%= link_to t("user.home"), "/#{current_user.username}" %></li>
+                <li><%= link_to t("user.home"), user_home_path(current_user) %></li>
                 <li><%= link_to t("user.setting"), user_setting_path(current_user) %></li>
                 <li>
-                    <%= link_to notifictions_path do %>
+                    <%= link_to user_msg_path(current_user) do %>
                       <%=t("user.notifiction")%> 
-                      <span class="badge badge-info"><%= current_user.notifictions.where(:unread => true).count %></span>
+                      <span class="badge badge-info"><%= current_user.msg.where(:unread => true).count %></span>
                     <% end %>
                 </li>
                 <li><%=link_to(t("user.dashboard"),admin_root_path,:class =>'admin_link') if current_user.admin? %></li>

@@ -64,15 +64,26 @@ class ChecksController < ApplicationController
   def import
     uploaded_io = params[:file]
     file_content = uploaded_io.read
-    index = -1
+    res = []
+    index = 0
     file_content.each_line do |line|
       index+=1
-      next if index == 0
-      data = line.force_encoding("iso-8859-1").split(/\t/)
-      m_NO,m_TMNo,m_EnNo,m_Name,m_GMNo,m_Mode,m_DateTime = data
-      logger.debug "#{m_NO}\t#{m_EnNo}\t#{m_DateTime}"
+      next if index == 1
+      data = line.force_encoding("iso-8859-1").split(/\t+/)
+      break if data.size < 7  #hardcode to seven .
+      m_NO,m_TMNo,m_EnNo,m_Name,m_GMNo,m_Mode,m_DateTime = data.map{ |k| k.gsub!(/\u0000/,'') }
+      res << {
+        :m_NO       => m_NO.to_i,
+        :m_TMNo     => m_TMNo.to_i,
+        :m_EnNo     => m_EnNo.to_i,
+        :m_Name     => m_Name.to_s,
+        :m_GMNo     => m_GMNo.to_i,
+        :m_Mode     => m_Mode.to_i,
+        :m_DateTime => m_DateTime.to_datetime
+      }
+      
     end
-    flash[:success] = "成功导入 #{index} 条"
+    flash[:success] = "成功导入 #{res.size} 条  "
     redirect_to checks_url
   end
 

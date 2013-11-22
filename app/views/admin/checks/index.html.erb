@@ -1,12 +1,13 @@
 <div class="well control-group">
 <legend>考勤规则</legend>
-<div class="form-inline">
+<%= form_tag 'checks/setting',:class => "form-inline",:remote => true do %>
+
 <label>上班时间:</label>
-<input type="time" class="input-small" />
+<input type="time" class="input-small" value="<%= @check[:check_in] %>" name="check_in" />
 <label>下班时间:</label>
-<input type="time" class="input-small" />
+<input type="time" class="input-small" value="<%= @check[:check_out] %>" name="check_out" />
 <label>容忍值:</label>
-<input type="number" class="input-mini" />
+<input type="number" class="input-mini span1" value="<%= @check[:limit] %>" name="limit" />
 <label>节假日安排:</label>
 <div  id="month" class="btn-group" data-toggle="buttons-radio">
   <button type="button" class="btn">1</button>
@@ -24,7 +25,8 @@
   <button type="button" class="btn">12</button>
 </div>
 <button class="btn btn-primary pull-right">Save</button>
-</div>
+<% end %>
+
 <div id="calendar"></div>
 </div>
 

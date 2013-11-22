@@ -1,0 +1,10 @@
+<div class="well">
+	<h1>还差一步</h1>
+	<p>我们已经将激活邮件发送到您的邮箱:</p>
+	<a href=""><%= "#{params[:email]}.#{params[:format]}"  %></a>
+	<p>请您点击邮件的激活链接 , 或者输入激活码</p>
+	<%= form_tag user_active_path, :class => "form-inline",:method => 'get' do %>
+		<input type="text" name="code" />
+		<button class="btn btn-primary">提交</button>
+	<% end %>
+</div>

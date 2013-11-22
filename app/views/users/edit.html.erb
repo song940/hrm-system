@@ -2,13 +2,42 @@
 <div class="well">
 	<h1><%=t("user.setting")%></h1>
 
-<%= render 'form' %>
+<%= form_for(@user,url: user_update_path(@user) ) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+     
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li> <span class="label label-important"><%= msg %></span></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fullname %>
+    <%= f.text_field :fullname , :required =>'required' , :placeholder => "Firstname lastname" %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, :readonly => '' %>
+  </div>
+    <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>
 
 <div class="alert alert-block alert-error fade in">
 	<h4 class="alert-heading">I'm unhappy , delete my account</h4>
 	<p>如果您觉得在使用过程中有任何不愉快 , 您可以</p>
 	<p>
-		<%= link_to t("user.destroy"),delete_user_path(@user.username), method: :delete,:class => "btn btn-danger" , data: { confirm: 'Are you sure?' } %>
+		<%= link_to t("user.destroy"),user_delete_path(@user), method: :delete,:class => "btn btn-danger" , data: { confirm: 'Are you sure?' } %>
 		<a class="btn" href="mailto:i@lsong.org"><%= t("user.tell_me_why?")%></a>
 	</p>
 </div>

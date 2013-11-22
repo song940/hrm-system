@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tm: 9.99
+  en: 9.99
+  name: MyString
+  gm: 9.99
+  mode: 9.99
+  chk: 2013-11-21 17:44:52
+
+two:
+  tm: 9.99
+  en: 9.99
+  name: MyString
+  gm: 9.99
+  mode: 9.99
+  chk: 2013-11-21 17:44:52

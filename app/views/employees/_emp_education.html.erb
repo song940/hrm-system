@@ -16,7 +16,7 @@
 		</div>
 		<div class="field">
 			<%= education_form.label :level, t("emp.edu.level") %>
-			<%= education_form.collection_select :level, Admin::Dictionary.where(:name => "level"), :key, :value, { :prompt => 'Select Level' } %>
+			<%= education_form.collection_select :level, Admin::Setting.where(:name => "level"), :key, :value, { :prompt => 'Select Level' } %>
 		</div>
 	</div>
 	<div class="span5 control-group" >

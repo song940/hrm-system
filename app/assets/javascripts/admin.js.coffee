@@ -36,11 +36,11 @@ window.App =
 		$('#month .btn').click (ev)->
 			month = this.innerText
 			$.get('/admin/checks/list',{ month: month, year:new Date().getFullYear() },(data)->
-				console.log data
 				$("#calendar").calendar({month: month, active: data })
 			)
 		#
-		$('#month .btn')[new Date().getMonth()].click()
+		btn_month = $('#month .btn')[new Date().getMonth()]
+		btn_month.click() if btn_month
 
 
 

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  has_many :notifictions , :dependent => :destroy
+  has_many :msg , :dependent => :destroy,:foreign_key => :sender
+
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -10,11 +11,11 @@ class User < ActiveRecord::Base
   validates :password,  presence: true
 
 
-	before_save { self.email = email.downcase }
-  before_create :generate_default_name
-
-	def User.encrypt(token)
-      Digest::SHA1.hexdigest(token.to_s)
+  before_save { email.downcase! }
+	before_create :generate_default_name
+  
+	def User.encrypt(password)
+      Digest::SHA1.hexdigest(password.to_s)
   end
   
   def User.new_remember_token
@@ -25,13 +26,18 @@ class User < ActiveRecord::Base
   	self.password == password
   end
 
-private
-
-  def generate_secure_password
-    self.password = User.encrypt("pass#{self.password}word") 
+  def to_param
+    username
   end
 
+  def admin?
+    status == 10
+  end
+
+private
+
   def generate_default_name
-    self.name = self.username
+    self.username =  email[/[^@]+/]
+    self.fullname =  email[/[^@]+/]
   end
 end
