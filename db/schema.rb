@@ -39,19 +39,11 @@ ActiveRecord::Schema.define(version: 20131122024032) do
 
   add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id"
 
-  create_table "check_infos", force: true do |t|
-    t.decimal  "tm"
-    t.decimal  "en"
-    t.string   "name"
-    t.decimal  "gm"
-    t.decimal  "mode"
-    t.datetime "chk"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "checks", force: true do |t|
     t.integer  "employee_id"
+    t.integer  "year"
+    t.integer  "month"
+    t.datetime "chk"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,7 +64,6 @@ ActiveRecord::Schema.define(version: 20131122024032) do
     t.string   "passport"
     t.string   "telephone"
     t.string   "address"
-    t.integer  "fingerkey"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,7 +5,6 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :passport
       t.string :telephone
       t.string :address
-      t.integer :fingerkey
       
       t.timestamps
     end

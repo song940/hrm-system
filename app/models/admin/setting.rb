@@ -6,6 +6,7 @@ class Admin::Setting < ActiveRecord::Base
 	end
 
 	def self.get(name,key)
-		Admin::Setting.where(:name => name, :key => key).first[:value]
+		settting = Admin::Setting.where(:name => name, :key => key).first
+		settting[:value] if settting
 	end
 end

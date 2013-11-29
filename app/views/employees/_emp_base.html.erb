@@ -18,9 +18,17 @@
 	    		<%= f.text_field :passport, :required => 'required', :pattern => "[0-9]{17}[0-9X]", :maxlength=> '18', :title => "passport" %>
 	  		</div>
 	  		<div class="field">
-	    		<%= f.label :address,t("emp.base.address") %>
-	    		<%= f.text_field :address, :required => 'required' %>
+	    		<%= f.label :id,t("emp.base.id") %>
+	    		<%= f.number_field :id, :required => 'required' %>
 	  		</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span10">
+	    	<div class="field">
+	    		<%= f.label :address,t("emp.base.address") %>
+	    		<%= f.text_field :address, :required => 'required',:class => 'input-block' %>
+	    	</div>
 		</div>
 	</div>
 </div>

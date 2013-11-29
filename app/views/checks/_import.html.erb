@@ -1,0 +1,18 @@
+<%= form_tag '/checks/import'  , multipart: true, :class => 'form-inline import' do  %>
+  <div>
+  	
+  	<% if @require_import %>
+  		<p class="alert">我们观察到, 本月的考勤数据是从 <a href=""><%= @require_import[:begin]%></a>开始 至<a href=""><%= @require_import[:end]%></a> 结束的 , 数据不完整会导致绩效数据错误 , 如果需要 , 请导入本月完整的考勤数据 .</p>
+  	<% else %>
+  		<p class="alert">请导入数据</p>
+  	<% end %>
+  </div>
+  <div class="input-append">
+      <label>导入文件:</label>
+      <span class="addon" >11</span>
+      <input type="file" class="hide" name="file" />
+      <input name="check" type="text" readonly="readonly" />
+      <button class="btn btn-upload" type="button">浏览</button>
+      <button class="btn btn-primary" type="submit">导入</button>
+  </div>
+<% end %>

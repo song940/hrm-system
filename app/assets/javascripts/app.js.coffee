@@ -15,8 +15,9 @@
 #= require turbolinks
 #= require jquery_nested_form
 #= require bootstrap
-#= require_tree .
 #= require nprogress
+#=* require_tree .
+#
 
 
 window.App =
@@ -51,8 +52,9 @@ window.App =
     NProgress.done(true)
 
     App.fackie()
-    #App.locale()
-
+    App.locale()
+    #
+    #$('#check_month button')[new Date().getMonth()].click()
 
 
 
@@ -63,6 +65,19 @@ $(document).on 'click','.btn-upload',(ev)->
     wrapper.find('input[type=text]').val(this.value)
   
   fileInput.click()
+
+$(document).on 'click','.btn-search-check',(ev) ->
+  #ev.preventDefault()
+  month = $('#check_month button.active').text()
+  type = $('#check_type  button.active').text()
+  employee = $("#check_employee").val()
+  $('input[name=month]').val(month)
+  #$('input[name=type]').val(type)
+  #
+
+$(document).on 'click','.btn-exception',(ev) ->
+  $('#myModal').modal()
+  
 
 
 $(document).on 'page:fetch', ->
