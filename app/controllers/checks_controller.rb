@@ -4,14 +4,12 @@ class ChecksController < ApplicationController
   # GET /checks.json
   def index
     defaults = { 
-                :year       => DateTime.now.year,
-                :month      => DateTime.now.month,
-                :employee   => 0
-               }
-
+      :year       => DateTime.now.year,
+      :month      => DateTime.now.month,
+      :employee   => 0
+     }
     @results = []
     
-
     params.replace(defaults.merge(params))
     year, month,employee_id = params[:year].to_i, params[:month].to_i,params[:employee].to_i
     date = Date.new year, month, 1 #
@@ -34,7 +32,7 @@ class ChecksController < ApplicationController
       employee_ids = Employee.select(:id).where(:id => employee_id).map{|emp|emp.id }
     end
 
-    logger.info "===>#{employee_ids}"
+    logger.info "===>员工:#{employee_ids}"
 
     employee_ids.each do |employee_id|
       checks = Check.where(:employee_id => employee_id,:year => year,:month => month).map{ |m| m.chk }
@@ -46,11 +44,11 @@ class ChecksController < ApplicationController
       logger.info "===>加班:#{overflow_work}"
 
       no_work.each do |day|
-        @results << { :employee_id => employee_id, :day => day, :type => "缺勤" }
+        @results << { :employee_id => employee_id, :date => day.to_datetime, :mode => 4 }
       end
 
       overflow_work.each do |day|
-        @results << { :employee_id => employee_id, :day => day, :type => "加班" }
+        @results << { :employee_id => employee_id, :date => day.to_datetime, :mode => 3 }
       end
 
       chk_time = {  }
@@ -69,15 +67,20 @@ class ChecksController < ApplicationController
         iso_check_out_time = Time.parse("#{year}-#{month}-#{day} #{check_out} UTC +0000")
         check_in_time = chks.first
         check_out_time = chks.last
-        too_late  = (iso_check_in_time  - check_in_time ).abs > limit_seconds
-        too_early = (iso_check_out_time - check_out_time).abs > limit_seconds
-        @results << { :employee_id => employee_id, :day => check_in_time.to_date, :type => "迟到" }  if too_late
-        @results << { :employee_id => employee_id, :day => check_out_time.to_date, :type => "早退" } if too_early
-        logger.info "==>#{check_in_time}-->#{too_late}-#{check_out_time}-#{too_early}"
+        too_late  = (check_in_time  - iso_check_in_time  ) > limit_seconds
+        too_early = (iso_check_out_time - check_out_time ) > limit_seconds
+        @results << { :employee_id => employee_id, :date => check_in_time.to_datetime, :mode => 1 }  if too_late
+        @results << { :employee_id => employee_id, :date => check_out_time.to_datetime, :mode => 2 } if too_early
       end
     end
-    @results.sort!{ |x,y| x[:day] <=> y[:day] }
-
+    @results.delete_if do |x| 
+      CheckException.where(
+        :employee_id => x[:employee_id],
+        :date => Time.zone.parse(x[:date].to_s),
+        :mode => x[:mode]
+      ).size > 0 
+    end
+    @results.sort!{ |x,y| x[:date] <=> y[:date] }
   end
 
   def import
@@ -120,6 +123,15 @@ class ChecksController < ApplicationController
 
     flash[:success] = "成功导入 #{counter} 条  "
     redirect_to checks_url
+  end
+
+  def exception
+    exp = CheckException.new do |exp|
+      exp[:employee_id] = params[:emp]
+      exp[:date] = params[:date]
+      exp[:mode] = params[:type]
+    end
+    render json: exp if exp.save
   end
 
 end

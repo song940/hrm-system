@@ -74,10 +74,20 @@ $(document).on 'click','.btn-search-check',(ev) ->
   $('input[name=month]').val(month)
   #$('input[name=type]').val(type)
   #
+  
+
+
 
 $(document).on 'click','.btn-exception',(ev) ->
-  $('#myModal').modal()
-  
+  $tr = $(ev.target).closest('tr')
+  data = $tr.data()
+  data['type'] = $tr.find('select').val()
+  console.log data
+  $(ev.target).button('loading')
+  $.post '/checks/exception',data ,()->
+    $(ev.target).button('reset')
+    $tr.hide('slow')
+
 
 
 $(document).on 'page:fetch', ->

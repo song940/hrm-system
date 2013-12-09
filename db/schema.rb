@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122024032) do
+ActiveRecord::Schema.define(version: 20131209030317) do
 
   create_table "admin_checks", force: true do |t|
     t.date     "date"
-    t.decimal  "year"
-    t.decimal  "month"
+    t.integer  "year"
+    t.integer  "month"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20131122024032) do
   end
 
   add_index "attachments", ["employee_id"], name: "index_attachments_on_employee_id"
+
+  create_table "check_exceptions", force: true do |t|
+    t.integer  "employee_id"
+    t.datetime "date"
+    t.integer  "mode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "checks", force: true do |t|
     t.integer  "employee_id"

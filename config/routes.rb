@@ -8,7 +8,9 @@ Hrm::Application.routes.draw do
   get "salary" => "salary#index"
 
 
+  get 'checks' => "checks#index" ,as: :checks
   post 'checks/import' => "checks#import"
+  post 'checks/exception' => "checks#exception"
 
   resources :attachments
 
@@ -25,8 +27,6 @@ Hrm::Application.routes.draw do
   resources :educations
 
   resources :employees
-
-  resources :checks
 
   resources :helps
 

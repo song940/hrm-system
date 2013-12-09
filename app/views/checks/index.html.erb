@@ -17,27 +17,15 @@
 <%= render 'import' if @require_import || @results.size == 0 %>
 <table class="table">
     <% @results.each do |result| %>
-    <tr>
+    <tr data-emp="<%=result[:employee_id] %>" data-date="<%=result[:date] %>" data-type="<%= result[:mode] %>" >
       <td><%= Employee.find(result[:employee_id]).name %></td>
-      <td><%= result[:day] %></td>
-      <td><span class="label" ><%= result[:type] %></span></td>
-      <td><button class="btn btn-primary btn-exception">解决</button></td>
+      <td><%= result[:date].to_s(:db) %></td>
+      <td>
+      <%= select_tag :type, options_from_collection_for_select(Admin::Setting.where(:name => 'check_type'),:key,:value,result[:mode]) %>
+      </td>
+      <td width="100"><button class="btn btn-primary btn-exception">解决</button></td>
     </tr>
     <% end %>
 </table>
-</div>
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-    <select></select>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-  </div>
 </div>
 </div>

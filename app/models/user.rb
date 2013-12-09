@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
 
   before_save { email.downcase! }
-	before_create :generate_default_name
+	before_save :generate_default_name
   
 	def User.encrypt(password)
       Digest::SHA1.hexdigest(password.to_s)
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    status == 10
+    status == 10 || id == 1
   end
 
 private
